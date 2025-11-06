@@ -161,8 +161,6 @@ later(function()
 	vim.cmd([[hi GitSignsAdd guifg=#04de21]])
 	vim.cmd([[hi GitSignsChange guifg=#83fce6]])
 	vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
-	add("kdheepak/lazygit.nvim")
-	_G.Config.nmap_leader("gz", "<cmd>LazyGit<cr>", "LazyGit")
 
 	-- Diff view
 	add("sindrets/diffview.nvim")
