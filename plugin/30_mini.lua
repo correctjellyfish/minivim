@@ -203,6 +203,7 @@ later(function()
 			{ mode = "n", keys = "gz", desc = "Slime" },
 			{ mode = "n", keys = "\\v", desc = "Toggle Virtual" },
 			{ mode = "n", keys = "<leader>r", desc = "+Repl" },
+			{ mode = "n", keys = "<leader>q", desc = "+Quarto" },
 			miniclue.gen_clues.builtin_completion(),
 			miniclue.gen_clues.g(),
 			miniclue.gen_clues.marks(),

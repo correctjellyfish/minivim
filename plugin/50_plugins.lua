@@ -114,6 +114,7 @@ later(function()
 			bash = { "shfmt" },
 			markdown = { "mdformat" },
 			typst = { "typstyle" },
+			quarto = { "injected" },
 		},
 		formatters = {
 			typstyle = {
@@ -123,6 +124,34 @@ later(function()
 			},
 		},
 	})
+	require("conform").formatters.injected = {
+		-- Set the options field
+		options = {
+			-- Set to true to ignore errors
+			ignore_errors = false,
+			-- Map of treesitter language to file extension
+			-- A temporary file name with this extension will be generated during formatting
+			-- because some formatters care about the filename.
+			lang_to_ext = {
+				bash = "sh",
+				c_sharp = "cs",
+				elixir = "exs",
+				javascript = "js",
+				julia = "jl",
+				latex = "tex",
+				markdown = "md",
+				python = "py",
+				ruby = "rb",
+				rust = "rs",
+				teal = "tl",
+				r = "r",
+				typescript = "ts",
+			},
+			-- Map of treesitter language to formatters to use
+			-- (defaults to the value from formatters_by_ft)
+			lang_to_formatters = {},
+		},
+	}
 end)
 
 -- Linting ====================================================================
@@ -255,6 +284,10 @@ later(function()
 					command = { "R" },
 					format = common.bracketed_paste,
 				},
+				quarto = {
+					command = { "R" },
+					format = common.bracketed_paste,
+				},
 			},
 			repl_filetype = function(_, ft)
 				return ft
@@ -289,7 +322,7 @@ later(function()
 	Config.nmap_leader("rb", function()
 		iron.send_code_block(false)
 	end, "Send Block")
-	Config.nmap_leader("rb", function()
+	Config.nmap_leader("rB", function()
 		iron.send_code_block(true)
 	end, "Send Block and Move")
 	Config.nmap_leader("rz", function()
@@ -342,6 +375,35 @@ later(function()
 	add("mrcjkb/rustaceanvim")
 	add("Saecki/crates.nvim")
 	require("crates").setup({})
+end)
+
+-- Quarto ================================================================
+later(function()
+	add({
+		source = "quarto-dev/quarto-nvim",
+		depends = { "jmbuhr/otter.nvim", "nvim-treesitter/nvim-treesitter" },
+	})
+	require("quarto").setup({
+		lspFeatures = {
+			enabled = true,
+		},
+		completion = { enabled = true },
+		codeRunner = {
+			enabled = true,
+			default_method = "iron",
+		},
+	})
+	-- Activate
+	Config.nmap_leader("qa", "<cmd>QuartoActivate<cr>", "Activate")
+	-- Preview
+	Config.nmap_leader("qp", "<cmd>QuartoPreview<cr>", "Preview")
+	Config.nmap_leader("qP", "<cmd>QuartoClosePreview<cr>", "Close Preview")
+	-- Send
+	Config.nmap_leader("qs", "<cmd>QuartoSend<cr>", "Send Cell")
+	Config.nmap_leader("ql", "<cmd>QuartoSendLine<cr>", "Send Line")
+	Config.nmap_leader("qu", "<cmd>QuartoSendAbove<cr>", "Send Above")
+	Config.nmap_leader("qd", "<cmd>QuartoSendBelow<cr>", "Send Below")
+	Config.nmap_leader("qA", "<cmd>QuartoSendAll<cr>", "Send All")
 end)
 
 -- Slueth ================================================================

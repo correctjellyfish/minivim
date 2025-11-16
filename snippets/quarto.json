@@ -1,0 +1,12 @@
+{
+  "Insert R Code Block": {
+    "prefix": "cbr",
+    "body": ["```{r}","${1:code}","```"],
+    "description": "Insert an R codeblock"
+  },
+  "Insert Python Code Block": {
+    "prefix": "cbp",
+    "body": [ "```{python}","${1:code}","```" ],
+    "description": "Insert a python codeblock"
+  }
+}
