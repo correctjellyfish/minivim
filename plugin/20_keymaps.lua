@@ -22,6 +22,10 @@ end
 _G.Config.nmap("[p", '<Cmd>exe "put! " . v:register<CR>', "Paste Above")
 _G.Config.nmap("]p", '<Cmd>exe "put "  . v:register<CR>', "Paste Below")
 
+-- Allow repeat visual indent
+vim.keymap.set("v", ">", ">gv", { desc = "Indent selection" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent selection" })
+
 -- Create table with information about Leader groups
 _G.Config.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
