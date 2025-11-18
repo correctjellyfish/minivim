@@ -192,6 +192,7 @@ later(function()
 	Config.nmap_leader("OR", ":Obsidian rename ", "Rename")
 	Config.nmap_leader("Oc", "<cmd>Obsidian toggle_checkbox<cr>", "Toggle Checkbox")
 	Config.nmap_leader("Ol", "<cmd>Obsidian links<cr>", "Links")
+	Config.nmap_leader("Ot", "<cmd>Obsidian toc<cr>", "Contents")
 
 	-- Visual Mode keymaps
 	vim.keymap.set("x", "<leader>Oe", ":Obsidian extract_note ", { desc = "Extract" })

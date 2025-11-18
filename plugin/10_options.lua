@@ -35,6 +35,9 @@ vim.o.updatetime = 250
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
 
+-- Set conceal level
+vim.o.conceallevel = 1
+
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
 _G.Config.colorscheme = "rose-pine"
