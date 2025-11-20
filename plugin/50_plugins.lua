@@ -388,6 +388,38 @@ later(function()
 	_G.Config.nmap("<c-l>", "<cmd>TmuxNavigateRight<cr>")
 end)
 
+-- Refactor ===================================================================
+later(function()
+	add({
+		source = "ThePrimeagen/refactoring.nvim",
+		depends = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+	})
+	require("refactoring").setup()
+
+	vim.keymap.set({ "n", "x" }, "<leader>Re", function()
+		return require("refactoring").refactor("Extract Function")
+	end, { expr = true, desc = "Extract Function" })
+	vim.keymap.set({ "n", "x" }, "<leader>Rf", function()
+		return require("refactoring").refactor("Extract Function To File")
+	end, { expr = true, desc = "Extract Function to File" })
+	vim.keymap.set({ "n", "x" }, "<leader>Rv", function()
+		return require("refactoring").refactor("Extract Variable")
+	end, { expr = true, desc = "Extract Variable" })
+	vim.keymap.set({ "n", "x" }, "<leader>RI", function()
+		return require("refactoring").refactor("Inline Function")
+	end, { expr = true, desc = "Inline Function" })
+	vim.keymap.set({ "n", "x" }, "<leader>Ri", function()
+		return require("refactoring").refactor("Inline Variable")
+	end, { expr = true, desc = "Inline Variable" })
+
+	vim.keymap.set({ "n", "x" }, "<leader>Rbb", function()
+		return require("refactoring").refactor("Extract Block")
+	end, { expr = true, desc = "Extract Block" })
+	vim.keymap.set({ "n", "x" }, "<leader>Rbf", function()
+		return require("refactoring").refactor("Extract Block To File")
+	end, { expr = true, desc = "Extract Block to File" })
+end)
+
 -- ############################### Languages ################################
 -- Markdown =================================================================
 
@@ -615,6 +647,8 @@ later(function()
 
 	_G.Config.nmap("\\z", "<cmd>Zen<cr>", "Toggle 'zen'")
 end)
+
+-- ##################### Colorschemes ##################################
 
 -- More Colorschemes (Used with switch colorscheme keymap) ===========
 later(function()
