@@ -483,7 +483,7 @@ later(function()
 		end,
 		open_mapping = [[<c-\>]],
 		hide_numbers = true,
-		shell = "bash",
+		shell = "fish",
 	})
 	-- Keymaps
 	_G.Config.nmap(
