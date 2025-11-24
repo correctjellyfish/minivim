@@ -25,7 +25,8 @@ now_if_args(function()
 		-- == Ocaml ==
 		"ocamllsp",
 		-- == Python ==
-		"pyright",
+		-- "pyright",
+		"pylsp",
 		"ruff",
 		-- == R ==
 		"r_language_server",
