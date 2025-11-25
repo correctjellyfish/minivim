@@ -109,12 +109,13 @@ later(function()
 			end
 		end,
 		formatters_by_ft = {
-			lua = { "stylua" },
-			cpp = { "clang-format" },
 			bash = { "shfmt" },
+			cpp = { "clang-format" },
+			lua = { "stylua" },
 			markdown = { "mdformat" },
-			typst = { "typstyle" },
 			quarto = { "injected" },
+			toml = { "taplo" },
+			typst = { "typstyle" },
 		},
 		formatters = {
 			typstyle = {

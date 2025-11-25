@@ -36,9 +36,10 @@ now_if_args(function()
 		-- == Typst ==
 		"tinymist",
 		-- == Config ==
-		"jsonls",
-		"lemminx",
-		"yamlls",
+		"jsonls", -- JSON
+		"lemminx", -- XML
+		"yamlls", -- YAML
+		"taplo", -- TOML
 	})
 end)
 
