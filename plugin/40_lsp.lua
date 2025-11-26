@@ -35,6 +35,8 @@ now_if_args(function()
 		"fish_lsp",
 		-- == Typst ==
 		"tinymist",
+		-- == Zig ==
+		"zls",
 		-- == Config ==
 		"jsonls", -- JSON
 		"lemminx", -- XML
