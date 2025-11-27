@@ -202,6 +202,7 @@ later(function()
 			Config.leader_group_clues,
 			{ mode = "n", keys = "gz", desc = "Slime" },
 			{ mode = "n", keys = "\\v", desc = "Toggle Virtual" },
+			{ mode = "n", keys = "<leader>d", desc = "+Debug" },
 			{ mode = "n", keys = "<leader>r", desc = "+Repl" },
 			{ mode = "x", keys = "<leader>r", desc = "+Repl" },
 			{ mode = "n", keys = "<leader>q", desc = "+Quarto" },

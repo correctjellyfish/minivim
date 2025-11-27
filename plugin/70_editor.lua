@@ -67,10 +67,10 @@ later(function()
 		socket_name = vim.fn.split(vim.env.TMUX, ",")[1],
 		target_pane = ":.2",
 	}
-	_G.Config.nmap("gz", "<Plug>SlimeMotionSend", "Slime Motion Send")
-	_G.Config.nmap("gzz", "<Plug>SlimeLineSend", "Slime Motion Send")
-	_G.Config.xmap("gz", "<Plug>SlimeRegionSend", "Slime Region Send")
-	_G.Config.nmap("gzc", "<Plug>SlimeConfig", "Slime Config")
+	Config.nmap("gz", "<Plug>SlimeMotionSend", "Slime Motion Send")
+	Config.nmap("gzz", "<Plug>SlimeLineSend", "Slime Motion Send")
+	Config.xmap("gz", "<Plug>SlimeRegionSend", "Slime Region Send")
+	Config.nmap("gzc", "<Plug>SlimeConfig", "Slime Config")
 end)
 
 later(function()
@@ -176,10 +176,10 @@ end)
 later(function()
 	vim.g.tmux_navigator_no_mappings = 1
 	add("christoomey/vim-tmux-navigator")
-	_G.Config.nmap("<c-h>", "<cmd>TmuxNavigateLeft<cr>")
-	_G.Config.nmap("<c-j>", "<cmd>TmuxNavigateDown<cr>")
-	_G.Config.nmap("<c-k>", "<cmd>TmuxNavigateUp<cr>")
-	_G.Config.nmap("<c-l>", "<cmd>TmuxNavigateRight<cr>")
+	Config.nmap("<c-h>", "<cmd>TmuxNavigateLeft<cr>")
+	Config.nmap("<c-j>", "<cmd>TmuxNavigateDown<cr>")
+	Config.nmap("<c-k>", "<cmd>TmuxNavigateUp<cr>")
+	Config.nmap("<c-l>", "<cmd>TmuxNavigateRight<cr>")
 end)
 
 -- Todo Comments =======================================================
@@ -209,7 +209,7 @@ later(function()
 	-- Diff view
 	add("sindrets/diffview.nvim")
 	require("diffview").setup({})
-	_G.Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
+	Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
 
 	-- Neogit
 	add({
