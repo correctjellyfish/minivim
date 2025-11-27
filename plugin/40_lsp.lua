@@ -113,3 +113,9 @@ later(function()
 		},
 	})
 end)
+
+-- Fidget =============================================================
+later(function()
+	add("j-hui/fidget.nvim")
+	require("fidget").setup({})
+end)
