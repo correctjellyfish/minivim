@@ -157,7 +157,12 @@ later(function()
 				elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
 					return cwd .. "/.venv/bin/python"
 				else
-					return "/usr/bin/python"
+					local python_exe = vim.fn.systemlist("which python")[1]
+					if vim.v.shell_error ~= 0 then
+						return "/usr/bin/python"
+					else
+						return python_exe
+					end
 				end
 			end,
 		},
