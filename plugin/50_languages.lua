@@ -111,13 +111,20 @@ later(function()
 		formatters_by_ft = {
 			bash = { "shfmt" },
 			cpp = { "clang-format" },
+			just = { "just" },
 			lua = { "stylua" },
 			markdown = { "mdformat" },
+			meson = { "meson" },
 			quarto = { "injected" },
 			toml = { "taplo" },
 			typst = { "typstyle" },
 		},
 		formatters = {
+			meson = {
+				command = "meson",
+				stdin = false,
+				args = { "format", "-i", "$FILENAME" },
+			},
 			typstyle = {
 				command = "typstyle",
 				stdin = true,

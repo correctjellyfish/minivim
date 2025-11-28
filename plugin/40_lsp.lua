@@ -22,6 +22,8 @@ now_if_args(function()
 		"marksman",
 		"harper_ls",
 		"mdformat",
+		-- == Meson ==
+		"mesonlsp",
 		-- == Ocaml ==
 		"ocamllsp",
 		-- == Python ==
