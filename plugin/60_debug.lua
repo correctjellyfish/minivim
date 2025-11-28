@@ -11,7 +11,9 @@ later(function()
 	-- New/Continue session
 	Config.nmap_leader("ds", require("dap").continue, "[S]tart/Continue")
 	-- Disconnect
-	Config.nmap_leader("dq", "<cmd>DapDisconnect<cr>", "[S]tart/Continue")
+	Config.nmap_leader("dq", "<cmd>DapTerminate<cr>", "[Q]uit")
+	-- Continue
+	Config.nmap_leader("dc", "<cmd>DapContinue<cr>", "[C]ontinue")
 	-- Debug Commands
 	Config.nmap("<Down>", "<cmd>DapStepOver<cr>", "Step Over")
 	Config.nmap("<Right>", "<cmd>DapStepInto<cr>", "Step Over")
@@ -32,6 +34,13 @@ later(function()
 		command = "rust-gdb",
 		args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 	}
+	-- LLDB-DAP
+	dap.adapters.lldb = {
+		type = "executable",
+		command = vim.fn.expand("$HOME") .. "/.pixi/bin/lldb-dap",
+		name = "lldb",
+	}
+
 	-- Debugpy (Python)
 	dap.adapters.python = function(cb, config)
 		if config.request == "attach" then
@@ -180,4 +189,19 @@ later(function()
 
 	-- Toggle View
 	Config.nmap_leader("dv", "<cmd>DapViewToggle<cr>", "Toggle DAP [V]iew")
+end)
+
+-- DAP Virtual Text =======================
+later(function()
+	add({ source = "theHamsta/nvim-dap-virtual-text", depends = { "mfussenegger/nvim-dap" } })
+	require("nvim-dap-virtual-text").setup()
+
+	-- Toggle Virtual Text
+	Config.nmap_leader("dt", "<cmd>DapVirtualTextToggle<cr>", "[T]oggle Virtual Text")
+end)
+
+-- Language Specific Plugins ===========================================
+later(function()
+	add({ source = "leoluz/nvim-dap-go", depends = { "mfussenegger/nvim-dap" } })
+	require("dap-go").setup()
 end)
