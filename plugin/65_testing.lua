@@ -10,7 +10,7 @@ later(function()
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"orjangj/neotest-ctest", -- C++ test runner (ctest)
+			"orjangj/neotest-ctest", -- C++ test runner (ctest/catch2/etc)
 			"nvim-neotest/neotest-python", -- Python test runner
 		},
 	})
