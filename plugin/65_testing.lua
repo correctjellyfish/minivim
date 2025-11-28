@@ -16,6 +16,10 @@ later(function()
 	})
 
 	require("neotest").setup({
-		adapters = require("neotest-python"),
+		adapters = {
+			require("neotest-python"), -- Python
+			require("rustaceanvim.neotest"), -- Rust
+			require("neotest-ctest"), -- C++
+		},
 	})
 end)
