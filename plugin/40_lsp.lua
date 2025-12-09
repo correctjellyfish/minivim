@@ -22,8 +22,6 @@ now_if_args(function()
 		"marksman",
 		"harper_ls",
 		"mdformat",
-		-- == Meson ==
-		"mesonlsp",
 		-- == Ocaml ==
 		"ocamllsp",
 		-- == Python ==
@@ -55,56 +53,6 @@ later(function()
 	-- Add and setup Mason
 	add({ source = "mason-org/mason.nvim" })
 	require("mason").setup({})
-
-	-- Add Mason Tool Installer (to get ensure installed)
-	add("WhoIsSethDaniel/mason-tool-installer.nvim")
-	require("mason-tool-installer").setup({
-		ensure_installed = {
-			-- C/C++
-			"clang-format",
-			"clangd",
-			-- Fortran
-			"fortls",
-			-- Go
-			"gopls",
-			"gofumpt",
-			-- Java
-			"jdtls",
-			-- Javascript
-			"eslint-lsp",
-			"deno",
-			-- Lua
-			"lua-language-server",
-			"luacheck",
-			"stylua",
-			-- Markdown
-			"harper-ls",
-			"marksman",
-			"markdownlint-cli2",
-			"mdformat",
-			-- Ocaml
-			"ocaml-lsp",
-			-- Python
-			"pyright",
-			"ruff",
-			-- "mypy", -- Removed since mypy must be installed in activated venv to work well
-			-- R
-			"air",
-			"r-languageserver",
-			-- Shell
-			"bash-language-server",
-			"shellcheck",
-			"shfmt",
-			"fish-lsp",
-			-- Typst
-			"tinymist",
-			"typstyle",
-			-- Config Files
-			"lemminx",
-			"json-lsp",
-			"yaml-language-server",
-		},
-	})
 
 	-- Add and setup Lazydev
 	add("folke/lazydev.nvim")
