@@ -2,6 +2,9 @@
 local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local now_if_args = _G.Config.now_if_args
 
+-- Nvim Options ===============================================================
+vim.lsp.inlay_hint.enable(true)
+
 -- Tree-sitter ================================================================
 now_if_args(function()
 	add({
