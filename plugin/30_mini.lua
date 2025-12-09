@@ -255,6 +255,11 @@ later(function()
 	})
 end)
 
+-- Cmdline
+later(function()
+	require("mini.cmdline").setup()
+end)
+
 -- Comment
 later(function()
 	require("mini.comment").setup()
@@ -291,7 +296,6 @@ later(function()
 end)
 
 -- Snippets for completion
-
 later(function()
 	add("rafamadriz/friendly-snippets")
 end)
