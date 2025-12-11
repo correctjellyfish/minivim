@@ -1,37 +1,6 @@
 -- Make concise helpers for installing/adding plugins in two stages
 local add, later = MiniDeps.add, MiniDeps.later
 
--- Git Integration =======================================================
-later(function()
-	add("lewis6991/gitsigns.nvim")
-	require("gitsigns").setup({
-		-- See `:help gitsigns.txt`
-		signs = {
-			add = { text = "+" },
-			change = { text = "~" },
-			delete = { text = "_" },
-			topdelete = { text = "‾" },
-			changedelete = { text = "~" },
-		},
-	})
-	vim.cmd([[hi GitSignsAdd guifg=#04de21]])
-	vim.cmd([[hi GitSignsChange guifg=#83fce6]])
-	vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
-
-	-- Diff view
-	add("sindrets/diffview.nvim")
-	require("diffview").setup({})
-	_G.Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
-
-	-- Neogit
-	add({
-		source = "NeogitOrg/neogit",
-		depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
-	})
-
-	-- Keymap to open neogit
-	_G.Config.nmap_leader("gn", "<cmd>Neogit<cr>", "Open Neogit")
-end)
 -- Marks ======================================================================
 later(function()
 	add("chentoast/marks.nvim")
@@ -219,4 +188,14 @@ later(function()
 
 	-- Keymap to open neogit
 	_G.Config.nmap_leader("gn", "<cmd>Neogit<cr>", "Open Neogit")
+end)
+
+-- Incremental Rename ======================================================
+later(function()
+	add("smjonas/inc-rename.nvim")
+	require("inc_rename").setup({})
+
+	Config.nmap_leader("lr", function()
+		return ":IncRename " .. vim.fn.expand("<cword>")
+	end, "Rename")
 end)
