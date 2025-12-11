@@ -105,6 +105,14 @@ local f = function()
 end
 _G.Config.new_autocmd("FileType", nil, f, "Proper 'formatoptions'")
 
+-- Save folds on exit, and load on file open
+_G.Config.new_autocmd("BufWrite", nil, function()
+	vim.cmd("mkview")
+end, "Save fold on exit")
+_G.Config.new_autocmd("BufRead", nil, function()
+	vim.cmd("silent! loadview")
+end, "Load fold on open")
+
 -- Diagnostics ----------------------------------------------------
 local diagnostic_opts = {
 	-- Show signs on top of any other sign, but only for warnings and errors
