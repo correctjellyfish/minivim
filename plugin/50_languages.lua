@@ -102,7 +102,7 @@ later(function()
 		notify_on_error = false,
 		format_on_save = function(bufnr)
 			local disable_filetypes = {} -- { c = true, cpp = true }
-			if disable_filetypes[vim.bo[bufnr].filetype] then
+			if vim.g.disable_autoformat or disable_filetypes[vim.bo[bufnr].filetype] then
 				return nil
 			else
 				return {
@@ -164,6 +164,19 @@ later(function()
 			lang_to_formatters = {},
 		},
 	}
+
+	--  Set this value to false initially to allow toggleing easily
+	vim.g.disable_autoformat = false
+
+	-- Create command to disable autoformatting
+	vim.api.nvim_create_user_command("FormatToggle", function()
+		vim.g.disable_autoformat = not vim.g.disable_autoformat
+	end, {
+		desc = "Toggle autoformat-on-save",
+	})
+
+	-- Add keymaps to call the disable formatting
+	Config.nmap("\\f", "<cmd>FormatToggle<cr>", "Toggle format on save")
 end)
 
 -- Linting ====================================================================
