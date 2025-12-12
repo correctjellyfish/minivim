@@ -113,7 +113,7 @@ now(function()
 			{
 				name = "Root",
 				action = function()
-					MiniFiles.open(_G.find_git_root())
+					MiniFiles.open(require("path_utils").find_git_root())
 				end,
 				section = "Explore",
 			},

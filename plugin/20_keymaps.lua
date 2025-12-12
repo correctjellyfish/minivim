@@ -78,7 +78,7 @@ local explore_quickfix = function()
 	vim.cmd("copen")
 end
 local explore_at_root = function()
-	MiniFiles.open(_G.find_git_root())
+	MiniFiles.open(require("path_utils").find_git_root())
 end
 
 _G.Config.nmap_leader("ed", "<Cmd>lua MiniFiles.open()<CR>", "Directory")
