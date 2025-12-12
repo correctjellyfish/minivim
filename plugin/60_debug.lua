@@ -7,6 +7,9 @@ later(function()
 	local dap = require("dap")
 
 	-- Defaults
+	dap.defaults.fallback = {
+		switchbuf = "newtab",
+	}
 
 	-- Add keymaps for dap
 	-- Breakpoints
