@@ -199,3 +199,13 @@ later(function()
 		return ":IncRename " .. vim.fn.expand("<cword>")
 	end, { expr = true, desc = "Rename" })
 end)
+
+-- Task Runner =============================================================
+later(function()
+	add("stevearc/overseer.nvim")
+	require("overseer").setup()
+
+	Config.nmap_leader("Tr", "<cmd>OverseerRun<cr>", "Run")
+	Config.nmap_leader("Ta", "<cmd>OverseerTaskAction<cr>", "Action")
+	Config.nmap_leader("Tt", "<cmd>OverseerToggle<cr>", "Toggle")
+end)

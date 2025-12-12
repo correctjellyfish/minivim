@@ -212,6 +212,7 @@ later(function()
 			{ mode = "x", keys = "<leader>R", desc = "+Refactor" },
 			{ mode = "n", keys = "<leader>Rb", desc = "+Block" },
 			{ mode = "x", keys = "<leader>Rb", desc = "+Block" },
+			{ mode = "n", keys = "<leader>T", desc = "+Tasks" },
 			{ mode = "n", keys = "<leader>n", desc = "+Neotest" },
 			miniclue.gen_clues.builtin_completion(),
 			miniclue.gen_clues.g(),
