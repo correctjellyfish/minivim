@@ -8,7 +8,7 @@ later(function()
 
 	-- Defaults
 	dap.defaults.fallback = {
-		switchbuf = "newtab",
+		switchbuf = "usevisible,usetab,uselast",
 	}
 
 	-- Add keymaps for dap
