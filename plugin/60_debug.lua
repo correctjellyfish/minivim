@@ -4,6 +4,9 @@ local add, later = MiniDeps.add, MiniDeps.later
 -- DAP ================================
 later(function()
 	add("mfussenegger/nvim-dap")
+	local dap = require("dap")
+
+	-- Defaults
 
 	-- Add keymaps for dap
 	-- Breakpoints
@@ -20,140 +23,48 @@ later(function()
 	Config.nmap("<Left>", "<cmd>DapStepOut<cr>", "Step Over")
 	Config.nmap("<Up>", "<cmd>DapRestartFrame<cr>", "Step Over")
 
-	-- Setup Adapters
-	local dap = require("dap")
 	-- GDB (C/C++/Rust)
 	dap.adapters.gdb = {
 		type = "executable",
 		command = "gdb",
 		args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 	}
+
+	-- LLDB
+	dap.adapters.lldb = {
+		type = "executable",
+		command = vim.fn.exepath("lldb-dap"),
+		name = "lldb",
+	}
+
+	-- Code lldb
+	dap.adapters.codelldb = {
+		type = "executable",
+		command = "codelldb",
+	}
+
 	-- GDB Rust Wrapper (Rust)
 	dap.adapters["rust-gdb"] = {
 		type = "executable",
 		command = "rust-gdb",
 		args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 	}
-	-- LLDB-DAP
-	dap.adapters.lldb = {
-		type = "executable",
-		command = vim.fn.expand("$HOME") .. "/.pixi/bin/lldb-dap",
-		name = "lldb",
-	}
-
-	-- Configuration for C/C++
-	dap.configurations.c = {
-		{
-			name = "Launch",
-			type = "gdb",
-			request = "launch",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			args = {}, -- provide arguments if needed
-			cwd = "${workspaceFolder}",
-			stopAtBeginningOfMainSubprogram = true,
-		},
-		{
-			name = "Select and attach to process",
-			type = "gdb",
-			request = "attach",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			pid = function()
-				local name = vim.fn.input("Executable name (filter): ")
-				return require("dap.utils").pick_process({ filter = name })
-			end,
-			cwd = "${workspaceFolder}",
-		},
-		{
-			name = "Attach to gdbserver :1234",
-			type = "gdb",
-			request = "attach",
-			target = "localhost:1234",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			cwd = "${workspaceFolder}",
-		},
-	}
-	dap.configurations.cpp = dap.configurations.c
-	-- Configuration for Rust
-	dap.configurations.rust = {
-		{
-			name = "Launch",
-			type = "rust-gdb",
-			request = "launch",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			args = {}, -- provide arguments if needed
-			cwd = "${workspaceFolder}",
-			stopAtBeginningOfMainSubprogram = false,
-		},
-		{
-			name = "Select and attach to process",
-			type = "rust-gdb",
-			request = "attach",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			pid = function()
-				local name = vim.fn.input("Executable name (filter): ")
-				return require("dap.utils").pick_process({ filter = name })
-			end,
-			cwd = "${workspaceFolder}",
-		},
-		{
-			name = "Attach to gdbserver :1234",
-			type = "rust-gdb",
-			request = "attach",
-			target = "localhost:1234",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			cwd = "${workspaceFolder}",
-		},
-	}
 end)
 
--- Nvim-DAP-Python ======================
+-- DAP View =============================
 later(function()
-	add({ source = "mfussenegger/nvim-dap-python", depends = { "mfussenegger/nvim-dap" } })
-	require("dap-python").setup("uv")
-end)
+	add("igorlfs/nvim-dap-view")
+	require("dap-view").setup({
+		winbar = {
+			show = true,
+			sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+			default_section = "scopes",
+			controls = { enabled = true },
+		},
+	})
 
--- -- DAP View =============================
--- later(function()
--- 	add("igorlfs/nvim-dap-view")
--- 	require("dap-view").setup({
--- 		winbar = {
--- 			controls = { enabled = true },
--- 		},
--- 	})
---
--- 	-- Toggle View
--- 	Config.nmap_leader("dv", "<cmd>DapViewToggle<cr>", "Toggle DAP [V]iew")
--- end)
-
--- DAP UI =================================
-later(function()
-	add({ source = "rcarriga/nvim-dap-ui", depends = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
-	local dap, dapui = require("dap"), require("dapui")
-	dapui.setup()
-	dap.listeners.before.attach.dapui_config = function()
-		dapui.open()
-	end
-	dap.listeners.before.launch.dapui_config = function()
-		dapui.open()
-	end
-	dap.listeners.before.event_terminated.dapui_config = function()
-		dapui.close()
-	end
-	dap.listeners.before.event_exited.dapui_config = function()
-		dapui.close()
-	end
+	-- Toggle View
+	Config.nmap_leader("dv", "<cmd>DapViewToggle<cr>", "Toggle DAP [V]iew")
 end)
 
 -- DAP Virtual Text =======================
@@ -166,7 +77,13 @@ later(function()
 end)
 
 -- Language Specific Plugins ===========================================
+-- Go =========================
 later(function()
 	add({ source = "leoluz/nvim-dap-go", depends = { "mfussenegger/nvim-dap" } })
 	require("dap-go").setup()
+end)
+-- Python ======================
+later(function()
+	add({ source = "mfussenegger/nvim-dap-python", depends = { "mfussenegger/nvim-dap" } })
+	require("dap-python").setup("uv")
 end)
