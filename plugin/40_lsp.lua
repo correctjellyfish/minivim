@@ -8,6 +8,7 @@ now_if_args(function()
 	vim.lsp.enable({
 		-- == C/C++ ==
 		"clangd",
+		"cmake",
 		-- == Fortran ==
 		"fortls",
 		-- == Go ==
