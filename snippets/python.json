@@ -1,0 +1,7 @@
+{
+  "Type Ignore": {
+    "prefix": "ti",
+    "body": "# type: ignore",
+    "description": "Insert comment to suppress type error for 1 line"
+  }
+}
