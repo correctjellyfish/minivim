@@ -6,6 +6,8 @@ now_if_args(function()
 	add("neovim/nvim-lspconfig")
 
 	vim.lsp.enable({
+		-- == Ada ==
+		"ada_ls",
 		-- == C/C++ ==
 		"clangd",
 		"cmake",
