@@ -27,8 +27,10 @@ now_if_args(function()
 		"ocamllsp",
 		-- == Python ==
 		-- "pyright",
-		"pylsp",
+		-- "pylsp",
 		"ruff",
+		-- "pyrefly",
+		"ty",
 		-- == R ==
 		"r_language_server",
 		-- == Shell ==

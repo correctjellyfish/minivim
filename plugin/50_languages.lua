@@ -185,7 +185,7 @@ later(function()
 	require("lint").linters_by_ft = {
 		markdown = { "markdownlint-cli2" },
 		bash = { "shellcheck" },
-		python = { "ty" },
+		python = { "mypy" },
 		javascript = { "oxlint", "eslint" },
 		typscript = { "eslint" },
 	}
