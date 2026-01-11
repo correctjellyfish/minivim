@@ -228,10 +228,10 @@ later(function()
 	end)
 
 	-- Add cursors at matches
-	set({ "n", "x" }, "<c-l>", function()
+	set({ "n", "x" }, "<c-j>", function()
 		mc.matchAddCursor(1)
 	end)
-	set({ "n", "x" }, "<c-h>", function()
+	set({ "n", "x" }, "<c-k>", function()
 		mc.matchAddCursor(-1)
 	end)
 
