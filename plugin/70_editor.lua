@@ -209,3 +209,65 @@ later(function()
 	Config.nmap_leader("Ta", "<cmd>OverseerTaskAction<cr>", "Action")
 	Config.nmap_leader("Tt", "<cmd>OverseerToggle<cr>", "Toggle")
 end)
+
+-- Multiple Cursor =========================================================
+later(function()
+	add("jake-stewart/multicursor.nvim")
+	local mc = require("multicursor-nvim")
+	mc.setup()
+
+	local set = vim.keymap.set
+	-- Split visual selections by regex.
+	set("x", "<c-c>", mc.matchCursors)
+	-- Add or skip cursor above/below the main cursor.
+	set({ "n", "x" }, "<c-up>", function()
+		mc.lineAddCursor(-1)
+	end)
+	set({ "n", "x" }, "<c-down>", function()
+		mc.lineAddCursor(1)
+	end)
+
+	-- Add cursors at matches
+	set({ "n", "x" }, "<c-l>", function()
+		mc.matchAddCursor(1)
+	end)
+	set({ "n", "x" }, "<c-h>", function()
+		mc.matchAddCursor(-1)
+	end)
+
+	set({ "n", "x" }, "<leader>cn", function()
+		mc.matchAddCursor(1)
+	end, { desc = "Add at next match" })
+	set({ "n", "x" }, "<leader>cs", function()
+		mc.matchSkipCursor(1)
+	end, { desc = "Skip next match" })
+	set({ "n", "x" }, "<leader>cN", function()
+		mc.matchAddCursor(-1)
+	end, { desc = "Add at previous match" })
+	set({ "n", "x" }, "<leader>cS", function()
+		mc.matchSkipCursor(-1)
+	end, { desc = "Skip previous match" })
+
+	-- Add and remove cursors with control + left click.
+	set("n", "<c-leftmouse>", mc.handleMouse)
+	set("n", "<c-leftdrag>", mc.handleMouseDrag)
+	set("n", "<c-leftrelease>", mc.handleMouseRelease)
+
+	mc.addKeymapLayer(function(layerSet)
+		-- Select a different cursor as the main one.
+		layerSet({ "n", "x" }, "<left>", mc.prevCursor)
+		layerSet({ "n", "x" }, "<right>", mc.nextCursor)
+
+		-- Delete the main cursor.
+		layerSet({ "n", "x" }, "<leader>cx", mc.deleteCursor, { desc = "Delete Current cursor" })
+
+		-- Enable and clear cursors using escape.
+		layerSet("n", "<esc>", function()
+			if not mc.cursorsEnabled() then
+				mc.enableCursors()
+			else
+				mc.clearCursors()
+			end
+		end)
+	end)
+end)
