@@ -233,3 +233,9 @@ end)
 later(function()
 	add("tpope/vim-sleuth")
 end)
+
+-- CSV View ==============================================================
+later(function()
+	add("hat0uma/csvview.nvim")
+	require("csvview").setup()
+end)
