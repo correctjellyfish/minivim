@@ -68,7 +68,7 @@ _G.Config.nmap("<S-l>", "<cmd>bnext<cr>", "Next Buffer")
 local edit_plugin_file = function(filename)
 	return string.format("<Cmd>edit %s/plugin/%s<CR>", vim.fn.stdpath("config"), filename)
 end
-local explore_at_file = "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>"
+local explore_at_file = "<Cmd>lua require('oil').open(vim.api.nvim_buf_get_name(0))<CR>"
 local explore_quickfix = function()
 	for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.fn.getwininfo(win_id)[1].quickfix == 1 then
@@ -78,10 +78,10 @@ local explore_quickfix = function()
 	vim.cmd("copen")
 end
 local explore_at_root = function()
-	MiniFiles.open(require("path_utils").find_git_root())
+	require("oil").open(require("path_utils").find_git_root())
 end
 
-_G.Config.nmap_leader("ed", "<Cmd>lua MiniFiles.open()<CR>", "Directory")
+_G.Config.nmap_leader("ed", "<Cmd>lua require('oil').open()<CR>", "Directory")
 _G.Config.nmap_leader("ef", explore_at_file, "File directory")
 _G.Config.nmap_leader("ei", "<Cmd>edit $MYVIMRC<CR>", "init.lua")
 _G.Config.nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")

@@ -95,7 +95,16 @@ now(function()
 	})
 end)
 
+-- Using Oil instead of Mini Files
+-- Oil.nvim ============================================================
 now(function()
+	add("stevearc/oil.nvim")
+	require("oil").setup({})
+	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+end)
+
+now(function()
+	local oil = require("oil")
 	local starter = require("mini.starter")
 	require("mini.starter").setup({
 		header = require("random-picture").get_random_image(),
@@ -106,14 +115,14 @@ now(function()
 			{
 				name = "Current",
 				action = function()
-					MiniFiles.open()
+					oil.open()
 				end,
 				section = "Explore",
 			},
 			{
 				name = "Root",
 				action = function()
-					MiniFiles.open(require("path_utils").find_git_root())
+					oil.open(require("path_utils").find_git_root())
 				end,
 				section = "Explore",
 			},
@@ -126,24 +135,24 @@ end)
 
 -- Files
 -- Set to now so that it can replace netrw
-now(function()
-	-- Enable directory/file preview
-	require("mini.files").setup({
-		windows = { preview = true },
-		-- options = { use_as_default_explorer = true },
-	})
-
-	-- Add common bookmarks for every explorer. Example usage inside explorer:
-	-- - `'c` to navigate into your config directory
-	-- - `g?` to see available bookmarks
-	local add_marks = function()
-		MiniFiles.set_bookmark("c", vim.fn.stdpath("config"), { desc = "Config" })
-		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/deps/opt"
-		MiniFiles.set_bookmark("p", minideps_plugins, { desc = "Plugins" })
-		MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" })
-	end
-	_G.Config.new_autocmd("User", "MiniFilesExplorerOpen", add_marks, "Add bookmarks")
-end)
+-- now(function()
+-- 	-- Enable directory/file preview
+-- 	require("mini.files").setup({
+-- 		windows = { preview = true },
+-- 		-- options = { use_as_default_explorer = true },
+-- 	})
+--
+-- 	-- Add common bookmarks for every explorer. Example usage inside explorer:
+-- 	-- - `'c` to navigate into your config directory
+-- 	-- - `g?` to see available bookmarks
+-- 	local add_marks = function()
+-- 		MiniFiles.set_bookmark("c", vim.fn.stdpath("config"), { desc = "Config" })
+-- 		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/deps/opt"
+-- 		MiniFiles.set_bookmark("p", minideps_plugins, { desc = "Plugins" })
+-- 		MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" })
+-- 	end
+-- 	_G.Config.new_autocmd("User", "MiniFilesExplorerOpen", add_marks, "Add bookmarks")
+-- end)
 
 -- Status Line
 now(function()
