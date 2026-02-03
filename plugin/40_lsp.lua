@@ -15,6 +15,8 @@ now_if_args(function()
 		"fortls",
 		-- == Go ==
 		"gopls",
+		-- == Java ==
+		"jdtls",
 		-- == Javascript/Typescript ==
 		"denols",
 		-- == Lean ==
