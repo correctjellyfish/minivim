@@ -235,6 +235,12 @@ later(function()
 		mc.matchAddCursor(-1)
 	end)
 
+	-- Split visual selections by regex.
+	set("x", "S", mc.splitCursors)
+
+	-- match new cursors within visual selections by regex.
+	set("x", "M", mc.matchCursors)
+
 	set({ "n", "x" }, "<leader>cn", function()
 		mc.matchAddCursor(1)
 	end, { desc = "Add at next match" })
