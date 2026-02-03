@@ -120,6 +120,7 @@ later(function()
 			quarto = { "injected" },
 			toml = { "taplo" },
 			typst = { "typstyle" },
+			xml = { "xmlformatter" },
 		},
 		formatters = {
 			meson = {
