@@ -68,7 +68,10 @@ _G.Config.nmap("<S-l>", "<cmd>bnext<cr>", "Next Buffer")
 local edit_plugin_file = function(filename)
 	return string.format("<Cmd>edit %s/plugin/%s<CR>", vim.fn.stdpath("config"), filename)
 end
-local explore_at_file = "<Cmd>lua require('oil').open(vim.api.nvim_buf_get_name(0))<CR>"
+local explore_at_file = function()
+	local oil = require("oil")
+	oil.open(oil.get_current_dir(0))
+end
 local explore_quickfix = function()
 	for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.fn.getwininfo(win_id)[1].quickfix == 1 then
@@ -81,12 +84,12 @@ local explore_at_root = function()
 	require("oil").open(require("path_utils").find_git_root())
 end
 
-_G.Config.nmap_leader("ed", "<Cmd>lua require('oil').open()<CR>", "Directory")
-_G.Config.nmap_leader("ef", explore_at_file, "File directory")
-_G.Config.nmap_leader("ei", "<Cmd>edit $MYVIMRC<CR>", "init.lua")
-_G.Config.nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")
-_G.Config.nmap_leader("eq", explore_quickfix, "Quickfix")
-_G.Config.nmap_leader("er", explore_at_root, "Root")
+Config.nmap_leader("ed", "<Cmd>lua require('oil').open()<CR>", "Directory")
+Config.nmap_leader("ef", explore_at_file, "File directory")
+Config.nmap_leader("ei", "<Cmd>edit $MYVIMRC<CR>", "init.lua")
+Config.nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")
+Config.nmap_leader("eq", explore_quickfix, "Quickfix")
+Config.nmap_leader("er", explore_at_root, "Root")
 
 -- f is for 'Fuzzy Find'. Common usage:
 -- - `<Leader>ff` - find files; for best performance requires `ripgrep`
