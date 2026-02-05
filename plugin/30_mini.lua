@@ -216,8 +216,6 @@ later(function()
 			{ mode = "n", keys = "<leader>r", desc = "+Repl" },
 			{ mode = "x", keys = "<leader>r", desc = "+Repl" },
 			{ mode = "n", keys = "<leader>q", desc = "+Quarto" },
-			{ mode = "n", keys = "<leader>O", desc = "+Obsidian" },
-			{ mode = "x", keys = "<leader>O", desc = "+Obsidian" },
 			{ mode = "n", keys = "<leader>R", desc = "+Refactor" },
 			{ mode = "x", keys = "<leader>R", desc = "+Refactor" },
 			{ mode = "n", keys = "<leader>Rb", desc = "+Block" },
