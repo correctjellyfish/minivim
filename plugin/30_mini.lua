@@ -180,6 +180,8 @@ later(function()
 			-- Make Function object
 			F = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
 		},
+		-- Increase the number of lines searched
+		n_lines = 150,
 
 		search_method = "cover",
 	})
