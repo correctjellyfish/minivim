@@ -7,12 +7,12 @@ later(function()
 	local shell_prog
 	if vim.fn.executable("fish") == 1 then
 		shell_prog = "fish"
+	elseif vim.fn.executable("pwsh") == 1 then
+		shell_prog = "pwsh"
 	elseif vim.fn.executable("bash") == 1 then
 		shell_prog = "bash"
 	elseif vim.fn.executable("sh") == 1 then
 		shell_prog = "sh"
-	elseif vim.fn.executable("pwsh") == 1 then
-		shell_prog = "pwsh"
 	elseif vim.fn.executable("powershell") == 1 then
 		shell_prog = "powershell"
 	elseif vim.fn.executable("cmd") == 1 then
