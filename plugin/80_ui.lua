@@ -4,6 +4,23 @@ local now_if_args = _G.Config.now_if_args
 
 -- Terminal ==============================================================
 later(function()
+	local shell_prog
+	if vim.fn.executable("fish") == 1 then
+		shell_prog = "fish"
+	elseif vim.fn.executable("bash") == 1 then
+		shell_prog = "bash"
+	elseif vim.fn.executable("sh") == 1 then
+		shell_prog = "sh"
+	elseif vim.fn.executable("pwsh") == 1 then
+		shell_prog = "pwsh"
+	elseif vim.fn.executable("powershell") == 1 then
+		shell_prog = "powershell"
+	elseif vim.fn.executable("cmd") == 1 then
+		shell_prog = "cmd"
+	else
+		shell_prog = nil
+	end
+
 	add("akinsho/toggleterm.nvim")
 	require("toggleterm").setup({
 		size = function(term)
@@ -15,7 +32,7 @@ later(function()
 		end,
 		open_mapping = [[<c-\>]],
 		hide_numbers = true,
-		shell = "fish",
+		shell = shell_prog,
 	})
 	-- Keymaps
 	_G.Config.nmap(
