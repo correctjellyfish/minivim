@@ -38,6 +38,9 @@ vim.o.timeoutlen = 300
 -- Set conceal level
 vim.o.conceallevel = 1
 
+-- Set fold method to indent
+vim.o.foldmethod = "indent"
+
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
 _G.Config.colorscheme = "rose-pine"
