@@ -39,7 +39,7 @@ vim.o.timeoutlen = 300
 vim.o.conceallevel = 1
 
 -- Set fold method to indent
-vim.o.foldmethod = "indent"
+vim.opt.foldmethod = "indent"
 
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
@@ -109,12 +109,12 @@ end
 _G.Config.new_autocmd("FileType", nil, f, "Proper 'formatoptions'")
 
 -- Save folds on exit, and load on file open
-_G.Config.new_autocmd("BufWrite", nil, function()
-	vim.cmd("mkview")
-end, "Save fold on exit")
-_G.Config.new_autocmd("BufRead", nil, function()
-	vim.cmd("silent! loadview")
-end, "Load fold on open")
+-- _G.Config.new_autocmd("BufWrite", nil, function()
+-- 	vim.cmd("mkview")
+-- end, "Save fold on exit")
+-- _G.Config.new_autocmd("BufRead", nil, function()
+-- 	vim.cmd("silent! loadview")
+-- end, "Load fold on open")
 
 -- Diagnostics ----------------------------------------------------
 local diagnostic_opts = {
