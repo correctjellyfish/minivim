@@ -40,6 +40,8 @@ vim.o.conceallevel = 1
 
 -- Set fold method to indent
 vim.opt.foldmethod = "indent"
+-- Set no initial folds
+vim.opt.foldlevelstart = 99
 
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
