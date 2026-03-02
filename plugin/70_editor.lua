@@ -55,7 +55,7 @@ later(function()
 			scratch_repl = true,
 			repl_definition = {
 				python = {
-					command = { "python" },
+					command = { "ipython", "--no-autoindent" },
 					format = common.bracketed_paste_python,
 					block_dividers = { "# %%", "#%%" },
 					env = { PYTHON_BASIC_REPL = "1" },
