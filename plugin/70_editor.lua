@@ -185,9 +185,15 @@ later(function()
 		source = "NeogitOrg/neogit",
 		depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
 	})
+	require("neogit").setup({
+		commit_editor = {
+			kind = "tab",
+			staged_diff_split_kind = "auto",
+		},
+	})
 
 	-- Keymap to open neogit
-	_G.Config.nmap_leader("gn", "<cmd>Neogit<cr>", "Open Neogit")
+	Config.nmap_leader("gn", "<cmd>Neogit<cr>", "Open Neogit")
 end)
 
 -- Incremental Rename ======================================================
