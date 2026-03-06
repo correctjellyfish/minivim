@@ -216,6 +216,14 @@ later(function()
 	Config.nmap_leader("Tt", "<cmd>OverseerToggle<cr>", "Toggle")
 end)
 
+-- Undotree ===============================================================
+later(function()
+	add("jiaoshijie/undotree")
+	Config.nmap_leader("u", function()
+		require("undotree").toggle()
+	end)
+end)
+
 -- Multiple Cursor =========================================================
 later(function()
 	add("jake-stewart/multicursor.nvim")
