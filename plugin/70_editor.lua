@@ -221,7 +221,7 @@ later(function()
 	add("jiaoshijie/undotree")
 	Config.nmap_leader("u", function()
 		require("undotree").toggle()
-	end)
+	end, "Undo-Tree")
 end)
 
 -- Multiple Cursor =========================================================

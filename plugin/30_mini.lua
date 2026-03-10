@@ -259,7 +259,6 @@ later(function()
 			{ mode = "x", keys = "<leader>Rb", desc = "+Block" },
 			{ mode = "n", keys = "<leader>T", desc = "+Tasks" },
 			{ mode = "n", keys = "<leader>n", desc = "+Neotest" },
-			{ mode = "n", keys = "<leader>u", desc = "+Undo Tree" },
 			miniclue.gen_clues.builtin_completion(),
 			miniclue.gen_clues.g(),
 			miniclue.gen_clues.marks(),
