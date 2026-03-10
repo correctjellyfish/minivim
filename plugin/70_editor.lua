@@ -298,7 +298,15 @@ later(function()
 	require("flash").setup({
 		incremental = true,
 	})
-	Config.nmap_leader("<space>", function()
+	Config.nmap_leader("<leader>", function()
 		require("flash").jump()
 	end, "Flash")
+
+	vim.keymap.set("x", "<leader><leader>", function()
+		require("flash").jump()
+	end, { desc = "Flash" })
+
+	vim.keymap.set("o", "R", function()
+		require("flash").remote()
+	end, { desc = "Remote Flash" })
 end)
