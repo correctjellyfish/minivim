@@ -1,5 +1,5 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later = MiniDeps.add, MiniDeps.later
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 -- Marks ======================================================================
 later(function()
@@ -309,4 +309,10 @@ later(function()
 	vim.keymap.set("o", "R", function()
 		require("flash").remote()
 	end, { desc = "Remote Flash" })
+end)
+
+-- Direnv (Tool Management) =================================
+now(function()
+	add("NotAShelf/direnv.nvim")
+	require("direnv").setup({})
 end)
