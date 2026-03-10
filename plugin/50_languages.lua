@@ -116,7 +116,7 @@ later(function()
 			lua = { "stylua" },
 			markdown = { "mdformat" },
 			meson = { "meson" },
-			python = { "ruff_fmt" },
+			python = { "ruff_format" },
 			quarto = { "injected" },
 			toml = { "taplo" },
 			typst = { "typstyle" },
