@@ -259,6 +259,7 @@ later(function()
 			{ mode = "x", keys = "<leader>Rb", desc = "+Block" },
 			{ mode = "n", keys = "<leader>T", desc = "+Tasks" },
 			{ mode = "n", keys = "<leader>n", desc = "+Neotest" },
+			{ mode = "n", keys = "<leader>u", desc = "+Undo Tree" },
 			miniclue.gen_clues.builtin_completion(),
 			miniclue.gen_clues.g(),
 			miniclue.gen_clues.marks(),
@@ -393,16 +394,6 @@ end)
 -- - `[i` / `]i` - navigate to scope's top / bottom
 later(function()
 	require("mini.indentscope").setup()
-end)
-
--- Jump
-later(function()
-	require("mini.jump").setup()
-end)
-
--- Jump 2D
-later(function()
-	require("mini.jump2d").setup()
 end)
 
 -- Keymap (Special keymap helpers)

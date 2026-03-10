@@ -291,3 +291,14 @@ later(function()
 		end)
 	end)
 end)
+
+-- Flash (Faster movement) ====================================
+later(function()
+	add("folke/flash.nvim")
+	require("flash").setup({
+		incremental = true,
+	})
+	Config.nmap_leader("<space>", function()
+		require("flash").jump()
+	end, "Flash")
+end)
