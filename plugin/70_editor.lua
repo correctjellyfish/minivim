@@ -317,3 +317,10 @@ now(function()
 	add("NotAShelf/direnv.nvim")
 	require("direnv").setup({})
 end)
+
+-- Grug-far (Easier search and replace) ====================
+later(function()
+	add("MagicDuck/grug-far.nvim")
+	require("grug-far").setup()
+	Config.nmap_leader("fR", ":GrugFar<CR>", "Replace")
+end)
