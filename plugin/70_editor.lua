@@ -314,8 +314,10 @@ end)
 
 -- Direnv (Tool Management) =================================
 now(function()
-	add("NotAShelf/direnv.nvim")
-	require("direnv").setup({})
+	if vim.fn.has("linux") then
+		add("NotAShelf/direnv.nvim")
+		require("direnv").setup({})
+	end
 end)
 
 -- Grug-far (Easier search and replace) ====================
