@@ -58,7 +58,6 @@ now_if_args(function()
 		"nix",
 		"ocaml",
 		"python",
-		"r",
 		"rust",
 		"sql",
 		"sway",
