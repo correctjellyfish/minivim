@@ -314,7 +314,7 @@ end)
 
 -- Direnv (Tool Management) =================================
 now(function()
-	if vim.fn.has("linux") then
+	if vim.fn.has("linux") > 0 then
 		add("NotAShelf/direnv.nvim")
 		require("direnv").setup({})
 	end
