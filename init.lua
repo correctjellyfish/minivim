@@ -17,7 +17,7 @@ if not vim.loop.fs_stat(mini_path) then
 		"clone",
 		"--filter=blob:none",
 		-- Uncomment next line to use 'stable' branch
-		-- '--branch', 'stable',
+		'--branch', 'main',
 		"https://github.com/nvim-mini/mini.nvim",
 		mini_path,
 	}
