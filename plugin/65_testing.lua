@@ -12,6 +12,7 @@ later(function()
 			"nvim-treesitter/nvim-treesitter",
 			"orjangj/neotest-ctest", -- C++ test runner (ctest/catch2/etc)
 			"nvim-neotest/neotest-python", -- Python test runner
+			"nvim-neotest/neotest-go", -- Go test runner
 		},
 	})
 
@@ -20,6 +21,7 @@ later(function()
 			require("neotest-python")({ runner = "pytest" }), -- Python
 			require("rustaceanvim.neotest"), -- Rust
 			require("neotest-ctest"), -- C++
+			require("neotest-go")({ recursive_run = true }),
 		},
 	})
 

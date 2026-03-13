@@ -111,6 +111,7 @@ later(function()
 		formatters_by_ft = {
 			bash = { "shfmt" },
 			-- cpp = { "clang-format" }, -- Bundled with clangd, no need to format
+			go = { "gofumpt" },
 			just = { "just" },
 			lua = { "stylua" },
 			markdown = { "mdformat" },
