@@ -6,13 +6,21 @@
 -- \____|__  /__|___|  /__|  \___/   |__|__|_|  /
 --         \/        \/                       \/
 -- Started from a MiniMax base config (https://github.com/nvim-mini/MiniMax)
+-- Put this at the top of 'init.lua'
 
--- Bootstrap 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
-local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.nvim"
+local path_package = vim.fn.stdpath("data") .. "/site"
+local mini_path = path_package .. "/pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini_path) then
 	vim.cmd('echo "Installing `mini.nvim`" | redraw')
-	local origin = "https://github.com/nvim-mini/mini.nvim"
-	local clone_cmd = { "git", "clone", "--filter=blob:none", origin, mini_path }
+	local clone_cmd = {
+		"git",
+		"clone",
+		"--filter=blob:none",
+		-- Uncomment next line to use 'stable' branch
+		-- '--branch', 'stable',
+		"https://github.com/nvim-mini/mini.nvim",
+		mini_path,
+	}
 	vim.fn.system(clone_cmd)
 	vim.cmd("packadd mini.nvim | helptags ALL")
 	vim.cmd('echo "Installed `mini.nvim`" | redraw')
