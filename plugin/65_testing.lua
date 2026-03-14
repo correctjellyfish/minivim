@@ -21,7 +21,7 @@ later(function()
 			require("neotest-python")({ runner = "pytest" }), -- Python
 			require("rustaceanvim.neotest"), -- Rust
 			require("neotest-ctest"), -- C++
-			require("neotest-golang"),
+			require("neotest-golang"), -- Go
 		},
 	})
 
