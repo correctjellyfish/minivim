@@ -4,7 +4,7 @@
 
 -- Map leader keys (used as <leader> in keybinds)
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = ";"
 
 -- Force enable true color
 vim.o.termguicolors = true
