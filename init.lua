@@ -8,6 +8,7 @@
 -- Started from a MiniMax base config (https://github.com/nvim-mini/MiniMax)
 -- Put this at the top of 'init.lua'
 
+-- Put this at the top of 'init.lua'
 local path_package = vim.fn.stdpath("data") .. "/site"
 local mini_path = path_package .. "/pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini_path) then
@@ -17,7 +18,7 @@ if not vim.loop.fs_stat(mini_path) then
 		"clone",
 		"--filter=blob:none",
 		-- Uncomment next line to use 'stable' branch
-		'--branch', 'main',
+		-- '--branch', 'stable',
 		"https://github.com/nvim-mini/mini.nvim",
 		mini_path,
 	}
@@ -25,7 +26,6 @@ if not vim.loop.fs_stat(mini_path) then
 	vim.cmd("packadd mini.nvim | helptags ALL")
 	vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
-
 -- Setup the Mini plugin manager (since the now/later helpers are needed throughout)
 require("mini.deps").setup()
 
