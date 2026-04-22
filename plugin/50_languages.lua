@@ -18,7 +18,11 @@ now_if_args(function()
 	require("blink.cmp").setup({
 		keymap = { preset = "enter" },
 		appearance = { nerd_font_variant = "mono" },
-		completion = { documentation = { auto_show = true }, list = { selection = { preselect = true } } },
+		completion = {
+			documentation = { auto_show = true },
+			list = { selection = { preselect = true } },
+			ghost_text = { enabled = true },
+		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "yank", "ripgrep" },
 			providers = {
