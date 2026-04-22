@@ -177,7 +177,7 @@ later(function()
 			-- Disable mini modules
 			vim.g.mininotify_disable = true
 			vim.g.minicursorword_disable = true
-			vim.g.minicompletion_disable = true
+			vim.g.blinkcompletion_disable = true
 			-- Disable fidget polling
 			require("fidget").setup({
 				progress = {
@@ -193,7 +193,7 @@ later(function()
 			vim.cmd("colorscheme " .. _G.Config.colorscheme)
 			vim.g.mininotify_disable = false
 			vim.g.minicursorword_disable = false
-			vim.g.minicompletion_disable = false
+			vim.g.blinkcompletion_disable = false
 			require("fidget").setup({
 				progress = {
 					suppress_on_insert = false,

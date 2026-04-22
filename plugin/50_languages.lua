@@ -16,6 +16,9 @@ now_if_args(function()
 		depends = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky", "mikavilpas/blink-ripgrep.nvim" },
 	})
 	require("blink.cmp").setup({
+		enabled = function()
+			return not vim.g.blinkcompletion_disable
+		end,
 		keymap = { preset = "enter" },
 		appearance = { nerd_font_variant = "mono" },
 		completion = {
