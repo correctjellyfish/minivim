@@ -45,7 +45,7 @@ vim.opt.foldlevelstart = 99
 
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
-_G.Config.colorscheme = "rose-pine"
+_G.Config.colorscheme = "catppuccin"
 _G.Config.focus_colorscheme = "grayscale-light"
 
 -- Some config options passed around
