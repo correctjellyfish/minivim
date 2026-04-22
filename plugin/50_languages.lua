@@ -7,13 +7,39 @@ vim.lsp.inlay_hint.enable(true)
 
 -- Completion
 now_if_args(function()
-	add({ source = "saghen/blink.cmp", checkout = "v1.10.2", depends = { "rafamadriz/friendly-snippets" } })
+	add({ source = "Saghen/blink.compat", checkout = "v2.5.0" })
+	require("blink.compat").setup({})
+
+	add({
+		source = "saghen/blink.cmp",
+		checkout = "v1.10.2",
+		depends = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky", "mikavilpas/blink-ripgrep.nvim" },
+	})
 	require("blink.cmp").setup({
 		keymap = { preset = "enter" },
 		appearance = { nerd_font_variant = "mono" },
 		completion = { documentation = { auto_show = true } },
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "yank", "ripgrep" },
+			providers = {
+				yank = {
+					name = "yank",
+					module = "blink-yanky",
+					opts = {
+						minLength = 5,
+						onlyCurrentFiletype = true,
+						trigger_characters = { '"' },
+						kind_icon = "󰅍",
+					},
+				},
+				ripgrep = {
+					module = "blink-ripgrep",
+					name = "Ripgrep",
+					opts = {
+						backend = { use = "gitgrep-or-ripgrep" },
+					},
+				},
+			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 		signature = { enabled = true },
