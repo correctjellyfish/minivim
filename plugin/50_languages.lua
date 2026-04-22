@@ -5,6 +5,20 @@ local now_if_args = _G.Config.now_if_args
 -- Nvim Options ===============================================================
 vim.lsp.inlay_hint.enable(true)
 
+-- Completion
+now_if_args(function()
+	add({ source = "saghen/blink.cmp", checkout = "v1.10.2", depends = { "rafamadriz/friendly-snippets" } })
+	require("blink.cmp").setup({
+		keymap = { preset = "enter" },
+		appearance = { nerd_font_variant = "mono" },
+		completion = { documentation = { auto_show = false } },
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+		},
+		fuzzy = { implementation = "prefer_rust_with_warning" },
+	})
+end)
+
 -- Tree-sitter ================================================================
 now_if_args(function()
 	add({
