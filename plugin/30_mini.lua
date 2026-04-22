@@ -68,15 +68,15 @@ now_if_args(function()
 end)
 
 -- Notify
-now(function()
-	require("mini.notify").setup({
-		lsp_progress = { enable = false }, -- Prefer fidget for this
-	})
-	-- Keymap for showing history
-	vim.keymap.set("n", "<leader>oh", function()
-		MiniNotify.show_history()
-	end, { desc = "Show Notification History" })
-end)
+-- now(function()
+-- 	require("mini.notify").setup({
+-- 		lsp_progress = { enable = false }, -- Prefer fidget for this
+-- 	})
+-- 	-- Keymap for showing history
+-- 	vim.keymap.set("n", "<leader>oh", function()
+-- 		MiniNotify.show_history()
+-- 	end, { desc = "Show Notification History" })
+-- end)
 
 -- Sessions
 now(function()
