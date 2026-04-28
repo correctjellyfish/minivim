@@ -4,7 +4,7 @@ local now_if_args = _G.Config.now_if_args
 
 -- Noice (general UI) ====================================================
 later(function()
-	add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
+	add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim" } })
 	require("noice").setup({
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -22,6 +22,9 @@ later(function()
 			inc_rename = true, -- enables an input dialog for inc-rename.nvim
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
+		cmdline = { enabled = true },
+		-- Disable notify in favor of mini
+		notify = { enabled = false },
 	})
 end)
 
@@ -175,7 +178,6 @@ later(function()
 			-- Modify colorscheme
 			vim.cmd("colorscheme " .. _G.Config.focus_colorscheme)
 			-- Disable mini modules
-			vim.g.mininotify_disable = true
 			vim.g.minicursorword_disable = true
 			vim.g.blinkcompletion_disable = true
 			-- Disable fidget polling
@@ -191,7 +193,6 @@ later(function()
 		on_close = function()
 			-- Undo on_open function
 			vim.cmd("colorscheme " .. _G.Config.colorscheme)
-			vim.g.mininotify_disable = false
 			vim.g.minicursorword_disable = false
 			vim.g.blinkcompletion_disable = false
 			require("fidget").setup({
