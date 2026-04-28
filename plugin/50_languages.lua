@@ -13,7 +13,7 @@ now_if_args(function()
 	add({
 		source = "saghen/blink.cmp",
 		checkout = "v1.10.2",
-		depends = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky", "mikavilpas/blink-ripgrep.nvim" },
+		depends = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky" },
 	})
 	require("blink.cmp").setup({
 		enabled = function()
@@ -27,7 +27,7 @@ now_if_args(function()
 			ghost_text = { enabled = true },
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "yank", "ripgrep" },
+			default = { "lsp", "path", "snippets", "buffer", "yank" },
 			providers = {
 				yank = {
 					name = "yank",
@@ -37,13 +37,6 @@ now_if_args(function()
 						onlyCurrentFiletype = true,
 						trigger_characters = { '"' },
 						kind_icon = "󰅍",
-					},
-				},
-				ripgrep = {
-					module = "blink-ripgrep",
-					name = "Ripgrep",
-					opts = {
-						backend = { use = "gitgrep-or-ripgrep" },
 					},
 				},
 			},
