@@ -77,6 +77,7 @@ later(function()
 		"Open [B]ottom Terminal"
 	)
 	_G.Config.nmap("<leader>ts", "<cmd>TermSelect<cr>", "[S]elect Terminal")
+	_G.Config.nmap_leader("tR", "<cmd>ToggleTermSetName<cr>", "[R]ename Terminal")
 end)
 
 -- Neotree =============================================================
