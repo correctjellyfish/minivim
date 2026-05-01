@@ -3,6 +3,7 @@ local add, later = MiniDeps.add, MiniDeps.later
 
 -- More Colorschemes (Used with switch colorscheme keymap) ===========
 later(function()
+	add("catppuccin/nvim")
 	add("oxfist/night-owl.nvim")
 	add("thesimonho/kanagawa-paper.nvim")
 	add("scottmckendry/cyberdream.nvim")
