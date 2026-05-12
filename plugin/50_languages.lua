@@ -13,7 +13,7 @@ now_if_args(function()
 	add({
 		source = "saghen/blink.cmp",
 		checkout = "v1.10.2",
-		depends = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky" },
+		depends = { "rafamadriz/friendly-snippets" },
 	})
 	require("blink.cmp").setup({
 		enabled = function()
@@ -27,19 +27,7 @@ now_if_args(function()
 			ghost_text = { enabled = true },
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "yank" },
-			providers = {
-				yank = {
-					name = "yank",
-					module = "blink-yanky",
-					opts = {
-						minLength = 5,
-						onlyCurrentFiletype = true,
-						trigger_characters = { '"' },
-						kind_icon = "󰅍",
-					},
-				},
-			},
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 		signature = { enabled = true },
