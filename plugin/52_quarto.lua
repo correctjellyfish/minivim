@@ -1,11 +1,11 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- Quarto ================================================================
 later(function()
 	add({
-		source = "quarto-dev/quarto-nvim",
-		depends = { "jmbuhr/otter.nvim", "nvim-treesitter/nvim-treesitter" },
+		"https://github.com/quarto-dev/quarto-nvim",
+		"https://github.com/jmbuhr/otter.nvim",
 	})
 	require("quarto").setup({
 		lspFeatures = {

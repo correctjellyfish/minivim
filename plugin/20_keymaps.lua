@@ -3,31 +3,31 @@
 -- Helper function for creating new normal mode mappings
 -- Added to Global table so that it can be used in the
 -- later plugin modules
-_G.Config.nmap = function(lhs, rhs, desc)
+Config.nmap = function(lhs, rhs, desc)
 	vim.keymap.set("n", lhs, rhs, { desc = desc })
 end
-_G.Config.xmap = function(lhs, rhs, desc)
+Config.xmap = function(lhs, rhs, desc)
 	vim.keymap.set("x", lhs, rhs, { desc = desc })
 end
 
 -- Helper functions for creating <leader> mappings
-_G.Config.nmap_leader = function(suffix, rhs, desc)
+Config.nmap_leader = function(suffix, rhs, desc)
 	vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })
 end
-_G.Config.xmap_leader = function(suffix, rhs, desc)
+Config.xmap_leader = function(suffix, rhs, desc)
 	vim.keymap.set("x", "<Leader>" .. suffix, rhs, { desc = desc })
 end
 
 -- Linewise paste
-_G.Config.nmap("[p", '<Cmd>exe "put! " . v:register<CR>', "Paste Above")
-_G.Config.nmap("]p", '<Cmd>exe "put "  . v:register<CR>', "Paste Below")
+Config.nmap("[p", '<Cmd>exe "put! " . v:register<CR>', "Paste Above")
+Config.nmap("]p", '<Cmd>exe "put "  . v:register<CR>', "Paste Below")
 
 -- Allow repeat visual indent
 vim.keymap.set("v", ">", ">gv", { desc = "Indent selection" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent selection" })
 
 -- Create table with information about Leader groups
-_G.Config.leader_group_clues = {
+Config.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
 	{ mode = "n", keys = "<Leader>e", desc = "+Explore/Edit" },
 	{ mode = "n", keys = "<Leader>f", desc = "+Find" },
@@ -49,16 +49,16 @@ local new_scratch_buffer = function()
 	vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
 end
 
-_G.Config.nmap_leader("bb", "<Cmd>b#<CR>", "Other Buffer")
-_G.Config.nmap_leader("bd", "<Cmd>lua MiniBufremove.delete()<CR>", "Delete") -- Closes current buffer
-_G.Config.nmap_leader("bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", "Delete!")
-_G.Config.nmap_leader("bs", new_scratch_buffer, "Scratch")
-_G.Config.nmap_leader("bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", "Wipeout") -- Removes all marks/info from buffer in addition to delete
-_G.Config.nmap_leader("bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", "Wipeout!")
+Config.nmap_leader("bb", "<Cmd>b#<CR>", "Other Buffer")
+Config.nmap_leader("bd", "<Cmd>lua MiniBufremove.delete()<CR>", "Delete") -- Closes current buffer
+Config.nmap_leader("bD", "<Cmd>lua MiniBufremove.delete(0, true)<CR>", "Delete!")
+Config.nmap_leader("bs", new_scratch_buffer, "Scratch")
+Config.nmap_leader("bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", "Wipeout") -- Removes all marks/info from buffer in addition to delete
+Config.nmap_leader("bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", "Wipeout!")
 
 -- Move through buffers
-_G.Config.nmap("<S-h>", "<cmd>bprevious<cr>", "Next Buffer")
-_G.Config.nmap("<S-l>", "<cmd>bnext<cr>", "Next Buffer")
+Config.nmap("<S-h>", "<cmd>bprevious<cr>", "Next Buffer")
+Config.nmap("<S-l>", "<cmd>bnext<cr>", "Next Buffer")
 
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory
@@ -105,31 +105,31 @@ local pick_quickfix = function()
 	MiniExtra.pickers.list({ scope = "quickfix" })
 end
 
-_G.Config.nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
-_G.Config.nmap_leader("f:", '<Cmd>Pick history scope=":"<CR>', '":" history')
-_G.Config.nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
-_G.Config.nmap_leader("fA", pick_added_hunks_buf, "Added hunks (buf)")
-_G.Config.nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
-_G.Config.nmap_leader("fc", "<Cmd>Pick git_commits<CR>", "Commits (all)")
-_G.Config.nmap_leader("fC", '<Cmd>Pick git_commits path="%"<CR>', "Commits (buf)")
-_G.Config.nmap_leader("fd", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
-_G.Config.nmap_leader("fD", '<Cmd>Pick diagnostic scope="current"<CR>', "Diagnostic buffer")
-_G.Config.nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
-_G.Config.nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
-_G.Config.nmap_leader("fG", '<Cmd>Pick grep pattern="<cword>"<CR>', "Grep current word")
-_G.Config.nmap_leader("fh", "<Cmd>Pick help<CR>", "Help tags")
-_G.Config.nmap_leader("fH", "<Cmd>Pick hl_groups<CR>", "Highlight groups")
-_G.Config.nmap_leader("fl", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
-_G.Config.nmap_leader("fL", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (buf)")
-_G.Config.nmap_leader("fm", "<Cmd>Pick git_hunks<CR>", "Modified hunks (all)")
-_G.Config.nmap_leader("fM", '<Cmd>Pick git_hunks path="%"<CR>', "Modified hunks (buf)")
-_G.Config.nmap_leader("fq", pick_quickfix, "Quickfix")
-_G.Config.nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
-_G.Config.nmap_leader("fR", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
-_G.Config.nmap_leader("fs", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace")
-_G.Config.nmap_leader("fS", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols document")
-_G.Config.nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
-_G.Config.nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
+Config.nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
+Config.nmap_leader("f:", '<Cmd>Pick history scope=":"<CR>', '":" history')
+Config.nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
+Config.nmap_leader("fA", pick_added_hunks_buf, "Added hunks (buf)")
+Config.nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
+Config.nmap_leader("fc", "<Cmd>Pick git_commits<CR>", "Commits (all)")
+Config.nmap_leader("fC", '<Cmd>Pick git_commits path="%"<CR>', "Commits (buf)")
+Config.nmap_leader("fd", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
+Config.nmap_leader("fD", '<Cmd>Pick diagnostic scope="current"<CR>', "Diagnostic buffer")
+Config.nmap_leader("ff", "<Cmd>Pick files<CR>", "Files")
+Config.nmap_leader("fg", "<Cmd>Pick grep_live<CR>", "Grep live")
+Config.nmap_leader("fG", '<Cmd>Pick grep pattern="<cword>"<CR>', "Grep current word")
+Config.nmap_leader("fh", "<Cmd>Pick help<CR>", "Help tags")
+Config.nmap_leader("fH", "<Cmd>Pick hl_groups<CR>", "Highlight groups")
+Config.nmap_leader("fl", '<Cmd>Pick buf_lines scope="all"<CR>', "Lines (all)")
+Config.nmap_leader("fL", '<Cmd>Pick buf_lines scope="current"<CR>', "Lines (buf)")
+Config.nmap_leader("fm", "<Cmd>Pick git_hunks<CR>", "Modified hunks (all)")
+Config.nmap_leader("fM", '<Cmd>Pick git_hunks path="%"<CR>', "Modified hunks (buf)")
+Config.nmap_leader("fq", pick_quickfix, "Quickfix")
+Config.nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
+Config.nmap_leader("fR", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
+Config.nmap_leader("fs", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace")
+Config.nmap_leader("fS", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols document")
+Config.nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
+Config.nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
 
 -- g is for 'Git'. Common usage:
 -- - `<Leader>gs` - show information at cursor
@@ -139,18 +139,18 @@ _G.Config.nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
 local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
 local git_log_buf_cmd = git_log_cmd .. " --follow -- %"
 
-_G.Config.nmap_leader("ga", "<Cmd>Git diff --cached<CR>", "Added diff")
-_G.Config.nmap_leader("gA", "<Cmd>Git diff --cached -- %<CR>", "Added diff buffer")
-_G.Config.nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
-_G.Config.nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
-_G.Config.nmap_leader("gd", "<Cmd>Git diff<CR>", "Diff")
-_G.Config.nmap_leader("gD", "<Cmd>Git diff -- %<CR>", "Diff buffer")
-_G.Config.nmap_leader("gl", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
-_G.Config.nmap_leader("gL", "<Cmd>" .. git_log_buf_cmd .. "<CR>", "Log buffer")
-_G.Config.nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
-_G.Config.nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
+Config.nmap_leader("ga", "<Cmd>Git diff --cached<CR>", "Added diff")
+Config.nmap_leader("gA", "<Cmd>Git diff --cached -- %<CR>", "Added diff buffer")
+Config.nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
+Config.nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
+Config.nmap_leader("gd", "<Cmd>Git diff<CR>", "Diff")
+Config.nmap_leader("gD", "<Cmd>Git diff -- %<CR>", "Diff buffer")
+Config.nmap_leader("gl", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
+Config.nmap_leader("gL", "<Cmd>" .. git_log_buf_cmd .. "<CR>", "Log buffer")
+Config.nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
+Config.nmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor")
 
-_G.Config.xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection")
+Config.xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at selection")
 
 -- l is for 'Language'. Common usage:
 -- - `<Leader>ld` - show more diagnostic details in a floating window
@@ -162,32 +162,32 @@ _G.Config.xmap_leader("gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at se
 -- by an "replace" operator in 'mini.operators' (which is more commonly used).
 local formatting_cmd = '<Cmd>lua require("conform").format({lsp_fallback=true})<CR>'
 
-_G.Config.nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
-_G.Config.nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
-_G.Config.nmap_leader("lf", formatting_cmd, "Format")
-_G.Config.nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
-_G.Config.nmap_leader("lH", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
-_G.Config.nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
-_G.Config.nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
-_G.Config.nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")
-_G.Config.nmap_leader("lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition")
+Config.nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
+Config.nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
+Config.nmap_leader("lf", formatting_cmd, "Format")
+Config.nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
+Config.nmap_leader("lH", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
+Config.nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
+Config.nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
+Config.nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")
+Config.nmap_leader("lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition")
 
-_G.Config.xmap_leader("lf", formatting_cmd, "Format selection")
+Config.xmap_leader("lf", formatting_cmd, "Format selection")
 
 -- m is for 'Map'. Common usage:
 -- - `<Leader>mt` - toggle map from 'mini.map' (closed by default)
 -- - `<Leader>mf` - focus on the map for fast navigation
 -- - `<Leader>ms` - change map's side (if it covers something underneath)
-_G.Config.nmap_leader("mf", "<Cmd>lua MiniMap.toggle_focus()<CR>", "Focus (toggle)")
-_G.Config.nmap_leader("mr", "<Cmd>lua MiniMap.refresh()<CR>", "Refresh")
-_G.Config.nmap_leader("ms", "<Cmd>lua MiniMap.toggle_side()<CR>", "Side (toggle)")
-_G.Config.nmap_leader("mt", "<Cmd>lua MiniMap.toggle()<CR>", "Toggle")
+Config.nmap_leader("mf", "<Cmd>lua MiniMap.toggle_focus()<CR>", "Focus (toggle)")
+Config.nmap_leader("mr", "<Cmd>lua MiniMap.refresh()<CR>", "Refresh")
+Config.nmap_leader("ms", "<Cmd>lua MiniMap.toggle_side()<CR>", "Side (toggle)")
+Config.nmap_leader("mt", "<Cmd>lua MiniMap.toggle()<CR>", "Toggle")
 
 -- o is for 'Other'. Common usage:
 -- - `<Leader>oz` - toggle between "zoomed" and regular view of current buffer
-_G.Config.nmap_leader("or", "<Cmd>lua MiniMisc.resize_window()<CR>", "Resize to default width")
-_G.Config.nmap_leader("ot", "<Cmd>lua MiniTrailspace.trim()<CR>", "Trim trailspace")
-_G.Config.nmap_leader("oz", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
+Config.nmap_leader("or", "<Cmd>lua MiniMisc.resize_window()<CR>", "Resize to default width")
+Config.nmap_leader("ot", "<Cmd>lua MiniTrailspace.trim()<CR>", "Trim trailspace")
+Config.nmap_leader("oz", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
 
 -- s is for 'Session'. Common usage:
 -- - `<Leader>sn` - start new session
@@ -195,10 +195,10 @@ _G.Config.nmap_leader("oz", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
 -- - `<Leader>sd` - delete previously started session
 local session_new = 'MiniSessions.write(vim.fn.input("Session name: "))'
 
-_G.Config.nmap_leader("sd", '<Cmd>lua MiniSessions.select("delete")<CR>', "Delete")
-_G.Config.nmap_leader("sn", "<Cmd>lua " .. session_new .. "<CR>", "New")
-_G.Config.nmap_leader("sr", '<Cmd>lua MiniSessions.select("read")<CR>', "Read")
-_G.Config.nmap_leader("sw", "<Cmd>lua MiniSessions.write()<CR>", "Write current")
+Config.nmap_leader("sd", '<Cmd>lua MiniSessions.select("delete")<CR>', "Delete")
+Config.nmap_leader("sn", "<Cmd>lua " .. session_new .. "<CR>", "New")
+Config.nmap_leader("sr", '<Cmd>lua MiniSessions.select("read")<CR>', "Read")
+Config.nmap_leader("sw", "<Cmd>lua MiniSessions.write()<CR>", "Write current")
 
 -- v is for 'Visits'. Common usage:
 -- - `<Leader>vv` - add    "core" label to current file.
@@ -212,24 +212,24 @@ local make_pick_core = function(cwd, desc)
 	end
 end
 
-_G.Config.nmap_leader("vc", make_pick_core("", "Core visits (all)"), "Core visits (all)")
-_G.Config.nmap_leader("vC", make_pick_core(nil, "Core visits (cwd)"), "Core visits (cwd)")
-_G.Config.nmap_leader("vv", '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
-_G.Config.nmap_leader("vV", '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core" label')
-_G.Config.nmap_leader("vl", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
-_G.Config.nmap_leader("vL", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
+Config.nmap_leader("vc", make_pick_core("", "Core visits (all)"), "Core visits (all)")
+Config.nmap_leader("vC", make_pick_core(nil, "Core visits (cwd)"), "Core visits (cwd)")
+Config.nmap_leader("vv", '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
+Config.nmap_leader("vV", '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core" label')
+Config.nmap_leader("vl", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
+Config.nmap_leader("vL", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
 
 -- Map for stopping search highlights
-_G.Config.nmap("<ESC>", "<cmd>nohlsearch<cr>", "Hide Search Highlights")
+Config.nmap("<ESC>", "<cmd>nohlsearch<cr>", "Hide Search Highlights")
 
 -- Map for existing terminal mode
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 
 -- Maps for toggling virtual text
-_G.Config.nmap("\\vt", function()
+Config.nmap("\\vt", function()
 	vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
 end, "Toggle virtual text")
-_G.Config.nmap("\\vl", function()
+Config.nmap("\\vl", function()
 	vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
 end, "Toggle virtual lines")
 
@@ -241,7 +241,7 @@ local random_colorscheme = function()
 	vim.cmd.colorscheme(new_scheme)
 end
 
-_G.Config.nmap_leader("oc", random_colorscheme, "Set Random Colorscheme")
+Config.nmap_leader("oc", random_colorscheme, "Set Random Colorscheme")
 
 -- Create a keymap for picking a new colorscheme
 local pick_colorscheme = function()
@@ -249,7 +249,7 @@ local pick_colorscheme = function()
 	vim.cmd.colorscheme(new_scheme)
 end
 
-_G.Config.nmap_leader("op", pick_colorscheme, "Pick Colorscheme")
+Config.nmap_leader("op", pick_colorscheme, "Pick Colorscheme")
 
 -- Create a keymap for finding Synonyms for the word under cursor
 local find_synonym = function()
@@ -260,4 +260,4 @@ local find_synonym = function()
 	print(table.concat(thesaurus_result, "\n"))
 end
 
-_G.Config.nmap_leader("lS", find_synonym, "Synonyms")
+Config.nmap_leader("lS", find_synonym, "Synonyms")

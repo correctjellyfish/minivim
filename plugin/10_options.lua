@@ -45,11 +45,11 @@ vim.opt.foldlevelstart = 99
 
 -- UI Settings ----------------------------------------------------
 -- Colorscheme
-_G.Config.colorscheme = "catppuccin"
-_G.Config.focus_colorscheme = "grayscale-light"
+Config.colorscheme = "catppuccin"
+Config.focus_colorscheme = "grayscale-light"
 
 -- Some config options passed around
-_G.Config.cursorline = true
+Config.cursorline = true
 
 vim.o.breakindent = true -- Indent wrapped lines to match line start
 vim.o.breakindentopt = "list:-1" -- Add padding for lists (if 'wrap' is set)
@@ -108,7 +108,7 @@ vim.o.completeopt = "menuone,noinsert,fuzzy,nosort" -- Use custom behavior
 local f = function()
 	vim.cmd("setlocal formatoptions-=c formatoptions-=o")
 end
-_G.Config.new_autocmd("FileType", nil, f, "Proper 'formatoptions'")
+Config.new_autocmd("FileType", nil, f, "Proper 'formatoptions'")
 
 -- Save folds on exit, and load on file open
 -- _G.Config.new_autocmd("BufWrite", nil, function()
@@ -135,6 +135,6 @@ local diagnostic_opts = {
 }
 
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
-MiniDeps.later(function()
+Config.later(function()
 	vim.diagnostic.config(diagnostic_opts)
 end)

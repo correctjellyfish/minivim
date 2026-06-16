@@ -7,13 +7,12 @@
 -- - Step one enables everything that is needed for first draw with `now()`.
 --   Sometimes is needed only if Neovim is started as `nvim -- path/to/file`.
 -- - Everything else is delayed until the first draw with `later()`.
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, now, later, now_if_args = vim.pack.add, Config.now, Config.later, Config.now_if_args
 
 -- Step one ===================================================================
--- Set rose-pine colorscheme (built using mini.base16)
+-- Set colorscheme
 now(function()
-	vim.cmd("colorscheme " .. _G.Config.colorscheme)
+	vim.cmd("colorscheme " .. Config.colorscheme)
 end)
 
 -- Basics
@@ -86,7 +85,7 @@ end)
 -- Starter
 -- Add fortune.nvim
 now(function()
-	add({ source = "rubiin/fortune.nvim", checkout = "master" })
+	add({ { src = "https://github.com/rubiin/fortune.nvim", version = "master" } })
 	require("fortune").setup({
 		max_width = 60,
 		display_format = "mixed",
@@ -109,7 +108,7 @@ function _G.get_oil_winbar()
 	end
 end
 now(function()
-	add("stevearc/oil.nvim")
+	add({ "https://github.com/stevearc/oil.nvim" })
 	local detail = false
 	require("oil").setup({
 		keymaps = {
@@ -132,9 +131,9 @@ now(function()
 	vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 end)
 later(function()
-	add({ source = "malewicz1337/oil-git.nvim", depends = { "stevearc/oil.nvim" } })
+	add({ "https://github.com/malewicz1337/oil-git.nvim" })
 	require("oil-git").setup({})
-	add({ source = "JezerM/oil-lsp-diagnostics.nvim", depends = { "stevearc/oil.nvim" } })
+	add({ "https://github.com/JezerM/oil-lsp-diagnostics.nvim" })
 	require("oil-lsp-diagnostics").setup({})
 end)
 
@@ -306,36 +305,6 @@ end)
 later(function()
 	require("mini.comment").setup()
 end)
-
--- Completion
--- later(function()
--- 	-- Customize post-processing of LSP responses for a better user experience.
--- 	-- Don't show 'Text' suggestions (usually noisy) and show snippets last.
--- 	local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
--- 	local process_items = function(items, base)
--- 		return MiniCompletion.default_process_items(items, base, process_items_opts)
--- 	end
--- 	require("mini.completion").setup({
--- 		lsp_completion = {
--- 			-- Without this config autocompletion is set up through `:h 'completefunc'`.
--- 			-- Although not needed, setting up through `:h 'omnifunc'` is cleaner
--- 			-- (sets up only when needed) and makes it possible to use `<C-u>`.
--- 			source_func = "omnifunc",
--- 			auto_setup = false,
--- 			process_items = process_items,
--- 		},
--- 	})
---
--- 	-- Set 'omnifunc' for LSP completion only when needed.
--- 	local on_attach = function(ev)
--- 		vim.bo[ev.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
--- 	end
--- 	_G.Config.new_autocmd("LspAttach", nil, on_attach, "Set 'omnifunc'")
---
--- 	-- Advertise to servers that Neovim now supports certain set of completion and
--- 	-- signature features through 'mini.completion'.
--- 	vim.lsp.config("*", { capabilities = MiniCompletion.get_lsp_capabilities() })
--- end)
 
 -- Autohighlight
 later(function()

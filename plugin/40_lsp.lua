@@ -1,9 +1,8 @@
 -- LSP Config
-local add, later = MiniDeps.add, MiniDeps.later
-local now_if_args = _G.Config.now_if_args
+local add, later, now_if_args = vim.pack.add, Config.later, Config.now_if_args
 
 now_if_args(function()
-	add("neovim/nvim-lspconfig")
+	add({ "https://github.com/neovim/nvim-lspconfig" })
 
 	vim.lsp.enable({
 		-- == Ada ==
@@ -58,11 +57,11 @@ later(function()
 	vim.g.python3_host_prog = "~/environments/pynvim/.venv/bin/python"
 
 	-- Add and setup Mason
-	add({ source = "mason-org/mason.nvim" })
+	add({ "https://github.com/mason-org/mason.nvim" })
 	require("mason").setup({})
 
 	-- Add and setup Lazydev
-	add("folke/lazydev.nvim")
+	add({ "https://github.com/folke/lazydev.nvim" })
 	require("lazydev").setup({
 		library = {
 			-- Load luvit types when the `vim.uv` word is found
@@ -73,6 +72,6 @@ end)
 
 -- Fidget =============================================================
 later(function()
-	add("j-hui/fidget.nvim")
+	add({ "https://github.com/j-hui/fidget.nvim" })
 	require("fidget").setup({})
 end)

@@ -1,9 +1,9 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- DAP ================================
 later(function()
-	add("mfussenegger/nvim-dap")
+	add({ "https://github.com/mfussenegger/nvim-dap" })
 	local dap = require("dap")
 
 	-- Defaults
@@ -56,7 +56,7 @@ end)
 
 -- DAP View =============================
 later(function()
-	add("igorlfs/nvim-dap-view")
+	add({ "https://github.com/igorlfs/nvim-dap-view" })
 	require("dap-view").setup({
 		winbar = {
 			show = true,
@@ -72,7 +72,7 @@ end)
 
 -- DAP Virtual Text =======================
 later(function()
-	add({ source = "theHamsta/nvim-dap-virtual-text", depends = { "mfussenegger/nvim-dap" } })
+	add({"https://github.com/theHamsta/nvim-dap-virtual-text"})
 	require("nvim-dap-virtual-text").setup({})
 
 	-- Toggle Virtual Text
@@ -82,11 +82,11 @@ end)
 -- Language Specific Plugins ===========================================
 -- Go =========================
 later(function()
-	add({ source = "leoluz/nvim-dap-go", depends = { "mfussenegger/nvim-dap" } })
+	add({ "https://github.com/leoluz/nvim-dap-go" })
 	require("dap-go").setup()
 end)
 -- Python ======================
 later(function()
-	add({ source = "mfussenegger/nvim-dap-python", depends = { "mfussenegger/nvim-dap" } })
+	add({ "https://github.com/mfussenegger/nvim-dap-python" })
 	require("dap-python").setup("uv")
 end)

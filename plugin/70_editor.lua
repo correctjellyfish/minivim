@@ -1,15 +1,15 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- Marks ======================================================================
 later(function()
-	add("chentoast/marks.nvim")
+	add({ "https://github.com/chentoast/marks.nvim" })
 	require("marks").setup()
 end)
 
 -- Yanky ======================================================================
 later(function()
-	add("gbprod/yanky.nvim")
+	add({ "https://github.com/gbprod/yanky.nvim" })
 	require("yanky").setup({
 		highlight = { timer = 150 },
 		preserve_cursor_position = {
@@ -28,7 +28,7 @@ end)
 
 -- REPL/Slime ================================================================
 later(function()
-	add("jpalardy/vim-slime")
+	add({ "https://github.com/jpalardy/vim-slime" })
 	-- Configure with the global values
 	vim.g.slime_target = "tmux"
 	vim.g.slime_bracketed_paste = 1
@@ -43,7 +43,7 @@ later(function()
 end)
 
 later(function()
-	add("Vigemus/iron.nvim")
+	add({ "https://github.com/Vigemus/iron.nvim" })
 
 	local iron = require("iron.core")
 	local marks = require("iron.marks")
@@ -144,7 +144,7 @@ end)
 -- Tmux =======================================================================
 later(function()
 	vim.g.tmux_navigator_no_mappings = 1
-	add("christoomey/vim-tmux-navigator")
+	add({ "https://github.com/christoomey/vim-tmux-navigator" })
 	Config.nmap("<c-h>", "<cmd>TmuxNavigateLeft<cr>")
 	Config.nmap("<c-j>", "<cmd>TmuxNavigateDown<cr>")
 	Config.nmap("<c-k>", "<cmd>TmuxNavigateUp<cr>")
@@ -153,14 +153,15 @@ end)
 
 -- Todo Comments =======================================================
 later(function()
-	add({ source = "folke/todo-comments.nvim", depends = { "nvim-lua/plenary.nvim" } })
+  add({"https://github.com/nvim-lua/plenary.nvim"})
+	add({"https://github.com/folke/todo-comments.nvim"})
 	require("todo-comments").setup({})
 	_G.Config.nmap_leader("ft", "<cmd>TodoQuickFix<cr>", "Todo QuickFix")
 end)
 
 -- Git ========================================================================
 later(function()
-	add("lewis6991/gitsigns.nvim")
+	add({ "https://github.com/lewis6991/gitsigns.nvim" })
 	require("gitsigns").setup({
 		-- See `:help gitsigns.txt`
 		signs = {
@@ -176,14 +177,14 @@ later(function()
 	vim.cmd([[hi GitSignsDelete guifg=#fa2525]])
 
 	-- Diff view
-	add("sindrets/diffview.nvim")
+	add({ "https://github.com/sindrets/diffview.nvim" })
 	require("diffview").setup({})
 	Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
 
 	-- Neogit
+  add({"https://github.com/nvim-lua/plenary.nvim"})
 	add({
-		source = "NeogitOrg/neogit",
-		depends = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+		"https://github.com/NeogitOrg/neogit",
 	})
 	require("neogit").setup({
 		commit_editor = {
@@ -198,7 +199,7 @@ end)
 
 -- Incremental Rename ======================================================
 later(function()
-	add("smjonas/inc-rename.nvim")
+	add({ "https://github.com/smjonas/inc-rename.nvim" })
 	require("inc_rename").setup({})
 
 	vim.keymap.set("n", "<leader>lr", function()
@@ -208,7 +209,7 @@ end)
 
 -- Task Runner =============================================================
 later(function()
-	add("stevearc/overseer.nvim")
+	add({ "https://github.com/stevearc/overseer.nvim" })
 	require("overseer").setup()
 
 	Config.nmap_leader("Tr", "<cmd>OverseerRun<cr>", "Run")
@@ -218,7 +219,7 @@ end)
 
 -- Undotree ===============================================================
 later(function()
-	add("jiaoshijie/undotree")
+	add({ "https://github.com/jiaoshijie/undotree" })
 	Config.nmap_leader("u", function()
 		require("undotree").toggle()
 	end, "Undo-Tree")
@@ -226,7 +227,7 @@ end)
 
 -- Multiple Cursor =========================================================
 later(function()
-	add("jake-stewart/multicursor.nvim")
+	add({ "https://github.com/jake-stewart/multicursor.nvim" })
 	local mc = require("multicursor-nvim")
 	mc.setup()
 
@@ -294,7 +295,7 @@ end)
 
 -- Flash (Faster movement) ====================================
 later(function()
-	add("folke/flash.nvim")
+	add({ "https://github.com/folke/flash.nvim" })
 	require("flash").setup({})
 	Config.nmap_leader("<leader>", function()
 		require("flash").jump()
@@ -315,14 +316,14 @@ end)
 -- Direnv (Tool Management) =================================
 now(function()
 	if vim.fn.has("linux") > 0 then
-		add("NotAShelf/direnv.nvim")
+		add({ "https://github.com/NotAShelf/direnv.nvim" })
 		require("direnv").setup({})
 	end
 end)
 
 -- Grug-far (Easier search and replace) ====================
 later(function()
-	add("MagicDuck/grug-far.nvim")
+	add({ "https://github.com/MagicDuck/grug-far.nvim" })
 	require("grug-far").setup()
 	Config.nmap_leader("fR", ":GrugFar<CR>", "Replace")
 end)

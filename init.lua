@@ -6,38 +6,46 @@
 -- \____|__  /__|___|  /__|  \___/   |__|__|_|  /
 --         \/        \/                       \/
 -- Started from a MiniMax base config (https://github.com/nvim-mini/MiniMax)
--- Put this at the top of 'init.lua'
-
--- Put this at the top of 'init.lua'
-local path_package = vim.fn.stdpath("data") .. "/site"
-local mini_path = path_package .. "/pack/deps/start/mini.nvim"
-if not vim.loop.fs_stat(mini_path) then
-	vim.cmd('echo "Installing `mini.nvim`" | redraw')
-	local clone_cmd = {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		-- Uncomment next line to use 'stable' branch
-		-- '--branch', 'stable',
-		"https://github.com/nvim-mini/mini.nvim",
-		mini_path,
-	}
-	vim.fn.system(clone_cmd)
-	vim.cmd("packadd mini.nvim | helptags ALL")
-	vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
--- Setup the Mini plugin manager (since the now/later helpers are needed throughout)
-require("mini.deps").setup()
 
 -- Global config table for passing data
 _G.Config = {}
 
 -- Autocommand helper
 local gr = vim.api.nvim_create_augroup("custom-config", {})
-_G.Config.new_autocmd = function(event, pattern, callback, desc)
+Config.new_autocmd = function(event, pattern, callback, desc)
 	local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
 	vim.api.nvim_create_autocmd(event, opts)
 end
 
--- Create a function to delay plugin loading if no args provided to nvim
-_G.Config.now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
+Config.on_packchanged = function(plugin_name, kinds, callback, desc)
+	local f = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then
+			return
+		end
+		if not ev.data.active then
+			vim.cmd.packadd(plugin_name)
+		end
+		callback(ev.data)
+	end
+	Config.new_autocmd("PackChanged", "*", f, desc)
+end
+
+-- Use vim.pack to add minivim
+vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
+
+-- Some helpers for package loading '
+local misc = require("mini.misc")
+Config.now = function(f)
+	misc.safely("now", f)
+end
+Config.later = function(f)
+	misc.safely("later", f)
+end
+Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
+Config.on_event = function(ev, f)
+	misc.safely("event:" .. ev, f)
+end
+Config.on_filetype = function(ft, f)
+	misc.safely("filetype:" .. ft, f)
+end

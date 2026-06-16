@@ -1,10 +1,11 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
-local now_if_args = _G.Config.now_if_args
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- Noice (general UI) ====================================================
 later(function()
-	add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim" } })
+	add({ "https://github.com/MunifTanjim/nui.nvim" })
+	add({ "https://github.com/folke/noice.nvim" })
+
 	require("noice").setup({
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -47,7 +48,7 @@ later(function()
 		shell_prog = nil
 	end
 
-	add("akinsho/toggleterm.nvim")
+	add({ "https://github.com/akinsho/toggleterm.nvim" })
 	require("toggleterm").setup({
 		size = function(term)
 			if term.direction == "horizontal" then
@@ -123,14 +124,14 @@ later(function()
 	end
 
 	add({
-		source = "nvim-neo-tree/neo-tree.nvim",
-		checkout = "v3.x",
-		depends = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"nvim-tree/nvim-web-devicons", -- optional, but recommended
-		},
+		"https://github.com/nvim-lua/plenary.nvim",
+		"https://github.com/MunifTanjim/nui.nvim",
+		"https://github.com/nvim-tree/nvim-web-devicons", -- optional, but recommended
 	})
+	add({ {
+		src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
+		version = vim.version.range("3.0"),
+	} })
 
 	require("neo-tree").setup({
 		filesystem = {
@@ -149,7 +150,7 @@ end)
 -- Zen ===============================================================
 -- Currently set up for writing
 later(function()
-	add("folke/zen-mode.nvim")
+	add({ "https://github.com/folke/zen-mode.nvim" })
 	require("zen-mode").setup({
 		window = {
 			backdrop = 0,

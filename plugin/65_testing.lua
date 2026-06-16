@@ -1,19 +1,19 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later = MiniDeps.add, MiniDeps.later
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- Neotest ========================================================
 later(function()
 	add({
-		source = "nvim-neotest/neotest",
-		depends = {
-			"nvim-neotest/nvim-nio",
-			"nvim-lua/plenary.nvim",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"orjangj/neotest-ctest", -- C++ test runner (ctest/catch2/etc)
-			"nvim-neotest/neotest-python", -- Python test runner
-			"fredrikaverpil/neotest-golang", -- Go test runner
-		},
+		"https://github.com/nvim-neotest/nvim-nio",
+		"https://github.com/nvim-lua/plenary.nvim",
+		"https://github.com/antoinemadec/FixCursorHold.nvim",
+		"https://github.com/nvim-treesitter/nvim-treesitter",
+		"https://github.com/orjangj/neotest-ctest", -- C++ test runner (ctest/catch2/etc)
+		"https://github.com/nvim-neotest/neotest-python", -- Python test runner
+		"https://github.com/fredrikaverpil/neotest-golang", -- Go test runner
+	})
+	add({
+		"https://github.com/nvim-neotest/neotest",
 	})
 
 	require("neotest").setup({

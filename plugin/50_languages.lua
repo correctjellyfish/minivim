@@ -1,20 +1,19 @@
 -- Make concise helpers for installing/adding plugins in two stages
-local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
-local now_if_args = _G.Config.now_if_args
+local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Config.now_if_args
 
 -- Nvim Options ===============================================================
 vim.lsp.inlay_hint.enable(true)
 
 -- Completion
 now_if_args(function()
-	add({ source = "Saghen/blink.compat", checkout = "v2.5.0" })
+	add({ { src = "https://github.com/Saghen/blink.compat", version = "v2.5.0" } })
 	require("blink.compat").setup({})
+	add({ "https://github.com/rafamadriz/friendly-snippets" })
 
-	add({
-		source = "saghen/blink.cmp",
-		checkout = "v1.10.2",
-		depends = { "rafamadriz/friendly-snippets" },
-	})
+	add({ {
+		src = "https://github.com/saghen/blink.cmp",
+		version = "v1.10.2",
+	} })
 	require("blink.cmp").setup({
 		enabled = function()
 			return not vim.g.blinkcompletion_disable
@@ -36,21 +35,15 @@ end)
 
 -- Tree-sitter ================================================================
 now_if_args(function()
+	-- Define hook to update tree-sitter parsers after plugin is updated
+	local ts_update = function()
+		vim.cmd("TSUpdate")
+	end
+	Config.on_packchanged("nvim-treesitter", { "update" }, ts_update, ":TSUpdate")
+
 	add({
-		source = "nvim-treesitter/nvim-treesitter",
-		-- Use `main` branch since `master` branch is frozen, yet still default
-		checkout = "main",
-		-- Update tree-sitter parser after plugin is updated
-		hooks = {
-			post_checkout = function()
-				vim.cmd("TSUpdate")
-			end,
-		},
-	})
-	add({
-		source = "nvim-treesitter/nvim-treesitter-textobjects",
-		-- Same logic as for 'nvim-treesitter'
-		checkout = "main",
+		"https://github.com/nvim-treesitter/nvim-treesitter",
+		"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
 	})
 
 	-- Define languages which will have parsers installed and auto enabled
@@ -122,7 +115,7 @@ end)
 -- Formatting =================================================================
 
 later(function()
-	add("stevearc/conform.nvim")
+	add({ "https://github.com/stevearc/conform.nvim" })
 
 	require("conform").setup({
 		notify_on_error = false,
@@ -210,7 +203,7 @@ end)
 -- Linting ====================================================================
 
 later(function()
-	add("mfussenegger/nvim-lint")
+	add({ "https://github.com/mfussenegger/nvim-lint" })
 
 	require("lint").linters_by_ft = {
 		markdown = { "markdownlint-cli2" },
@@ -226,45 +219,13 @@ later(function()
 	})
 end)
 
--- -- Refactor ===================================================================
--- later(function()
--- 	add({
--- 		source = "ThePrimeagen/refactoring.nvim",
--- 		depends = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
--- 	})
--- 	require("refactoring").setup({})
---
--- 	vim.keymap.set({ "n", "x" }, "<leader>Re", function()
--- 		return require("refactoring").refactor("Extract Function")
--- 	end, { expr = true, desc = "Extract Function" })
--- 	vim.keymap.set({ "n", "x" }, "<leader>Rf", function()
--- 		return require("refactoring").refactor("Extract Function To File")
--- 	end, { expr = true, desc = "Extract Function to File" })
--- 	vim.keymap.set({ "n", "x" }, "<leader>Rv", function()
--- 		return require("refactoring").refactor("Extract Variable")
--- 	end, { expr = true, desc = "Extract Variable" })
--- 	vim.keymap.set({ "n", "x" }, "<leader>RI", function()
--- 		return require("refactoring").refactor("Inline Function")
--- 	end, { expr = true, desc = "Inline Function" })
--- 	vim.keymap.set({ "n", "x" }, "<leader>Ri", function()
--- 		return require("refactoring").refactor("Inline Variable")
--- 	end, { expr = true, desc = "Inline Variable" })
---
--- 	vim.keymap.set({ "n", "x" }, "<leader>Rbb", function()
--- 		return require("refactoring").refactor("Extract Block")
--- 	end, { expr = true, desc = "Extract Block" })
--- 	vim.keymap.set({ "n", "x" }, "<leader>Rbf", function()
--- 		return require("refactoring").refactor("Extract Block To File")
--- 	end, { expr = true, desc = "Extract Block to File" })
--- end)
-
 -- Slueth ================================================================
 later(function()
-	add("tpope/vim-sleuth")
+	add({ "https://github.com/tpope/vim-sleuth" })
 end)
 
 -- CSV View ==============================================================
 later(function()
-	add("hat0uma/csvview.nvim")
+	add({ "https://github.com/hat0uma/csvview.nvim" })
 	require("csvview").setup()
 end)
