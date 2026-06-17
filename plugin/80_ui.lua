@@ -3,7 +3,6 @@ local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Con
 
 -- Noice (general UI) ====================================================
 later(function()
-	add({ "https://github.com/MunifTanjim/nui.nvim" })
 	add({ "https://github.com/folke/noice.nvim" })
 
 	require("noice").setup({
@@ -123,11 +122,6 @@ later(function()
 		end)
 	end
 
-	add({
-		"https://github.com/nvim-lua/plenary.nvim",
-		"https://github.com/MunifTanjim/nui.nvim",
-		"https://github.com/nvim-tree/nvim-web-devicons", -- optional, but recommended
-	})
 	add({ {
 		src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
 		version = vim.version.range("3.0"),

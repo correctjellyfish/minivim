@@ -4,15 +4,9 @@ local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Con
 -- Neotest ========================================================
 later(function()
 	add({
-		"https://github.com/nvim-neotest/nvim-nio",
-		"https://github.com/nvim-lua/plenary.nvim",
-		"https://github.com/antoinemadec/FixCursorHold.nvim",
-		"https://github.com/nvim-treesitter/nvim-treesitter",
 		"https://github.com/orjangj/neotest-ctest", -- C++ test runner (ctest/catch2/etc)
 		"https://github.com/nvim-neotest/neotest-python", -- Python test runner
 		"https://github.com/fredrikaverpil/neotest-golang", -- Go test runner
-	})
-	add({
 		"https://github.com/nvim-neotest/neotest",
 	})
 

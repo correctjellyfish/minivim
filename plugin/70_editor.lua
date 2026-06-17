@@ -153,7 +153,6 @@ end)
 
 -- Todo Comments =======================================================
 later(function()
-	add({ "https://github.com/nvim-lua/plenary.nvim" })
 	add({ "https://github.com/folke/todo-comments.nvim" })
 	require("todo-comments").setup({})
 	_G.Config.nmap_leader("ft", "<cmd>TodoQuickFix<cr>", "Todo QuickFix")
@@ -182,7 +181,6 @@ later(function()
 	Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
 
 	-- Neogit
-	add({ "https://github.com/nvim-lua/plenary.nvim" })
 	add({
 		"https://github.com/NeogitOrg/neogit",
 	})

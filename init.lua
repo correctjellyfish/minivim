@@ -31,8 +31,14 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
 	Config.new_autocmd("PackChanged", "*", f, desc)
 end
 
--- Use vim.pack to add minivim
-vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
+-- Use vim.pack to add minivim, and common dependencies
+vim.pack.add({
+	"https://github.com/nvim-mini/mini.nvim",
+	"https://github.com/nvim-neotest/nvim-nio",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/antoinemadec/FixCursorHold.nvim",
+	"https://github.com/MunifTanjim/nui.nvim",
+})
 
 -- Some helpers for package loading '
 local misc = require("mini.misc")

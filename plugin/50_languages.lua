@@ -203,7 +203,7 @@ end)
 -- Linting ====================================================================
 
 later(function()
-	add({ "https://github.com/mfussenegger/nvim-lint" })
+	add({ "https://codeberg.org/mfussenegger/nvim-lint" })
 
 	require("lint").linters_by_ft = {
 		markdown = { "markdownlint-cli2" },

@@ -3,17 +3,19 @@ local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Con
 
 -- More Colorschemes (Used with switch colorscheme keymap) ===========
 later(function()
-	add({ "https://github.com/rktjmp/lush.nvim" })
-	add({ "https://github.com/catppuccin/nvim" })
-	add({ "https://github.com/oxfist/night-owl.nvim" })
-	add({ "https://github.com/thesimonho/kanagawa-paper.nvim" })
-	add({ "https://github.com/scottmckendry/cyberdream.nvim" })
-	add({ "https://github.com/slugbyte/lackluster.nvim" })
-	add({ "https://github.com/maxmx03/fluoromachine.nvim" })
-	add({ "https://github.com/uloco/bluloco.nvim" })
-	add({ "https://github.com/kdheepak/monochrome.nvim" })
-	add({ "https://github.com/yorik1984/newpaper.nvim" })
-	add({ "https://github.com/ianklapouch/wildberries.nvim" })
-	add({ "https://github.com/Abstract-IDE/Abstract-cs" })
-	add({ "https://github.com/idr4n/github-monochrome.nvim" })
+	add({
+		"https://github.com/rktjmp/lush.nvim",
+		"https://github.com/catppuccin/nvim",
+		"https://github.com/oxfist/night-owl.nvim",
+		"https://github.com/thesimonho/kanagawa-paper.nvim",
+		"https://github.com/scottmckendry/cyberdream.nvim",
+		"https://github.com/slugbyte/lackluster.nvim",
+		"https://github.com/maxmx03/fluoromachine.nvim",
+		"https://github.com/uloco/bluloco.nvim",
+		"https://github.com/kdheepak/monochrome.nvim",
+		"https://github.com/yorik1984/newpaper.nvim",
+		"https://github.com/ianklapouch/wildberries.nvim",
+		"https://github.com/Abstract-IDE/Abstract-cs",
+		"https://github.com/idr4n/github-monochrome.nvim",
+	})
 end)
