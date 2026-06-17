@@ -124,7 +124,7 @@ later(function()
 
 	add({ {
 		src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
-		version = vim.version.range("3.0"),
+		version = vim.version.range("3"),
 	} })
 
 	require("neo-tree").setup({

@@ -124,9 +124,9 @@
       "src": "https://github.com/jake-stewart/multicursor.nvim"
     },
     "neo-tree.nvim": {
-      "rev": "981a43adcca25e7ccc3c589902d49f25e4d48ebc",
+      "rev": "83e7a2982fd12b9c3d35bc39dd5877cd91a02a61",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
-      "version": "3.0.0 - 3.1.0"
+      "version": "3.0.0 - 4.0.0"
     },
     "neogit": {
       "rev": "5d1b65d6215928e941e1a6a4e76e02fd45ada31f",
@@ -189,8 +189,8 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lint": {
-      "rev": "99cbc3ca8a76845fca50e496be7212bebf907dd3",
-      "src": "https://github.com/mfussenegger/nvim-lint"
+      "rev": "1ba49820a3c29ba6ab1b2dd441a63b3822c4e39b",
+      "src": "https://codeberg.org/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
       "rev": "a683e0ddf0cf64c6cd689e18ffb480ade3c162b7",
@@ -245,7 +245,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "d2f5271924117588c82bec9086c9807960aafe1e",
+      "rev": "a22902f216b068faa311807c9f361c6b1d971367",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "todo-comments.nvim": {
