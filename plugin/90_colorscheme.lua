@@ -5,7 +5,7 @@ local add, later, now, now_if_args = vim.pack.add, Config.later, Config.now, Con
 later(function()
 	add({
 		"https://github.com/rktjmp/lush.nvim",
-		"https://github.com/catppuccin/nvim",
+		{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 		"https://github.com/oxfist/night-owl.nvim",
 		"https://github.com/thesimonho/kanagawa-paper.nvim",
 		"https://github.com/scottmckendry/cyberdream.nvim",

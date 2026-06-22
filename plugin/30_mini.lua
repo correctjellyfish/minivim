@@ -167,26 +167,10 @@ now(function()
 	})
 end)
 
--- Files
--- Set to now so that it can replace netrw
--- now(function()
--- 	-- Enable directory/file preview
--- 	require("mini.files").setup({
--- 		windows = { preview = true },
--- 		-- options = { use_as_default_explorer = true },
--- 	})
---
--- 	-- Add common bookmarks for every explorer. Example usage inside explorer:
--- 	-- - `'c` to navigate into your config directory
--- 	-- - `g?` to see available bookmarks
--- 	local add_marks = function()
--- 		MiniFiles.set_bookmark("c", vim.fn.stdpath("config"), { desc = "Config" })
--- 		local minideps_plugins = vim.fn.stdpath("data") .. "/site/pack/deps/opt"
--- 		MiniFiles.set_bookmark("p", minideps_plugins, { desc = "Plugins" })
--- 		MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" })
--- 	end
--- 	_G.Config.new_autocmd("User", "MiniFilesExplorerOpen", add_marks, "Add bookmarks")
--- end)
+-- Deps
+Config.nmap_leader("pu", function()
+	vim.pack.update()
+end, "Update")
 
 -- Status Line
 now(function()
@@ -249,11 +233,12 @@ later(function()
 			{ mode = "n", keys = "\\v", desc = "Toggle Virtual" },
 			{ mode = "n", keys = "<leader>c", desc = "+Multicursor" },
 			{ mode = "n", keys = "<leader>d", desc = "+Debug" },
+			{ mode = "n", keys = "<leader>n", desc = "+Neotest" },
+			{ mode = "n", keys = "<leader>p", desc = "+Packages" },
+			{ mode = "n", keys = "<leader>q", desc = "+Quarto" },
 			{ mode = "n", keys = "<leader>r", desc = "+Repl" },
 			{ mode = "x", keys = "<leader>r", desc = "+Repl" },
-			{ mode = "n", keys = "<leader>q", desc = "+Quarto" },
 			{ mode = "n", keys = "<leader>T", desc = "+Tasks" },
-			{ mode = "n", keys = "<leader>n", desc = "+Neotest" },
 			miniclue.gen_clues.builtin_completion(),
 			miniclue.gen_clues.g(),
 			miniclue.gen_clues.marks(),
