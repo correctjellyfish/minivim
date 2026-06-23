@@ -112,7 +112,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "1345d191bb3da9c7b0e977f4387c5761f9bff68d",
+      "rev": "c594be5b095204e99473825ec2dee872e7409a4d",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "monochrome.nvim": {
@@ -129,7 +129,7 @@
       "version": "3.0.0 - 4.0.0"
     },
     "neogit": {
-      "rev": "828dd073e6ad180fdb5c1603c7ad7f68a384c40b",
+      "rev": "43ea1a0854052e583f647e0b35879f0158a70a78",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neotest": {
@@ -237,7 +237,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "5fad80932ee6f0c633e0e9e2ccec003a274f2d15",
+      "rev": "cf18d0e272536266b9897b80b28004489ec54c42",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "todo-comments.nvim": {
