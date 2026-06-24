@@ -35,7 +35,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "4da5ba201fbfcd886fa9ab34daae9472f564c0d9",
+      "rev": "c0e998d3bfba3d7c01a3711a1d7e699d7d92bd22",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffview.nvim": {
@@ -43,7 +43,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "direnv.nvim": {
-      "rev": "e623d3645152839cbe7e73e7b2aa6e31256020ea",
+      "rev": "b41d16d88de2753059827e030d4dabcdb8deeec2",
       "src": "https://github.com/NotAShelf/direnv.nvim"
     },
     "fidget.nvim": {
@@ -76,7 +76,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "c995bbacf8229dc096ec1c3d60f8531059c86c1b",
+      "rev": "c69859c1d5427ab5fc7ed12380ab521b4e336691",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "inc-rename.nvim": {
@@ -141,7 +141,7 @@
       "src": "https://github.com/orjangj/neotest-ctest"
     },
     "neotest-golang": {
-      "rev": "f0ba097d4af098c036aac24cd647480d0d301ad2",
+      "rev": "542cbaf37f1233a2723ccd64ce8ed7e3acbd192b",
       "src": "https://github.com/fredrikaverpil/neotest-golang"
     },
     "neotest-python": {
@@ -164,6 +164,10 @@
       "rev": "de740991c12411b663994b2860f1a4fd0937c130",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
+    "nvim": {
+      "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
       "src": "https://github.com/mfussenegger/nvim-dap"
@@ -177,7 +181,7 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-view": {
-      "rev": "91a2b0eab74cc889499587166cc6e3d53a7e1e45",
+      "rev": "440ec66c2b26470ec97cd4d6667cdd4b51cbc7cb",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -185,7 +189,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lint": {
-      "rev": "4b7957daf4b81eb578114bd6fcf20b6f5a2b59e8",
+      "rev": "01c9842c089069ab497430159312b2c8868a4590",
       "src": "https://codeberg.org/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
@@ -237,7 +241,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "cf18d0e272536266b9897b80b28004489ec54c42",
+      "rev": "e7f64f5184a92fe06e4e8fb64b4aae467e272da5",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "todo-comments.nvim": {
