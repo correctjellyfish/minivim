@@ -112,7 +112,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "7c2caf0ae915d819f2f39467d6bb9313c2b3e90a",
+      "rev": "dc8a9918c3b1bc18a5fcd04d39b6d658074c0886",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "monochrome.nvim": {
@@ -133,7 +133,7 @@
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neotest": {
-      "rev": "ad991822b7076b1d940b33a9d6d0d30416d5df81",
+      "rev": "ff5437f7d9af801917bed119082934b0eb6ee0e9",
       "src": "https://github.com/nvim-neotest/neotest"
     },
     "neotest-ctest": {
