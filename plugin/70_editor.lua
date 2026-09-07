@@ -26,22 +26,7 @@ later(function()
 	vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)", { desc = "Next Yank from history" })
 end)
 
--- REPL/Slime ================================================================
-later(function()
-	add({ "https://github.com/jpalardy/vim-slime" })
-	-- Configure with the global values
-	vim.g.slime_target = "tmux"
-	vim.g.slime_bracketed_paste = 1
-	vim.g.slime_default_config = {
-		socket_name = vim.fn.split(vim.env.TMUX, ",")[1],
-		target_pane = ":.2",
-	}
-	Config.nmap("gz", "<Plug>SlimeMotionSend", "Slime Motion Send")
-	Config.nmap("gzz", "<Plug>SlimeLineSend", "Slime Motion Send")
-	Config.xmap("gz", "<Plug>SlimeRegionSend", "Slime Region Send")
-	Config.nmap("gzc", "<Plug>SlimeConfig", "Slime Config")
-end)
-
+-- REPL ================================================================
 later(function()
 	add({ "https://github.com/Vigemus/iron.nvim" })
 

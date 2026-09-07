@@ -265,7 +265,6 @@ later(function()
 		clues = {
 			-- This is defined in 'plugin/20_keymaps.lua' with Leader group descriptions
 			Config.leader_group_clues,
-			{ mode = "n", keys = "gz", desc = "Slime" },
 			{ mode = "n", keys = "\\v", desc = "Toggle Virtual" },
 			{ mode = "n", keys = "<leader>c", desc = "+Multicursor" },
 			{ mode = "n", keys = "<leader>d", desc = "+Debug" },
