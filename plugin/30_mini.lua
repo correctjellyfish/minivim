@@ -223,13 +223,19 @@ later(function()
 	local ai = require("mini.ai")
 	ai.setup({
 		custom_textobjects = {
-			-- Make Buffer Object
-			B = MiniExtra.gen_ai_spec.buffer(),
+			-- Make Block Object
+			B = ai.gen_spec.treesitter({ a = "@block.outer", i = "@block.inner" }),
 			-- Make Function object
 			F = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+			-- Make a Class object
+			C = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),
+			-- Make a Loop object
+			L = ai.gen_spec.treesitter({ a = "@loop.outer", i = "@loop.inner" }),
+			-- Make a Conditional/If object
+			I = ai.gen_spec.treesitter({ a = "@conditional.outer", i = "@conditional.inner" }),
 		},
 		-- Increase the number of lines searched
-		n_lines = 150,
+		n_lines = 200,
 
 		search_method = "cover",
 	})
