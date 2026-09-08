@@ -117,11 +117,12 @@ end)
 -- Zen ===============================================================
 -- Currently set up for writing
 later(function()
+	add({ "https://github.com/junegunn/limelight.vim" })
 	add({ "https://github.com/folke/zen-mode.nvim" })
 	require("zen-mode").setup({
 		window = {
-			backdrop = 0,
-			width = 0.7,
+			backdrop = 0.95,
+			width = 0.5,
 			height = 1,
 			options = {
 				signcolumn = "no",
@@ -145,10 +146,12 @@ later(function()
 		},
 		on_open = function()
 			-- Modify colorscheme
-			vim.cmd("colorscheme " .. _G.Config.focus_colorscheme)
+			vim.cmd("colorscheme " .. Config.focus_colorscheme)
+			vim.opt.background = "light"
+			-- Activate limelite
+			vim.cmd("Limelight")
 			-- Disable mini modules
 			vim.g.minicursorword_disable = true
-			vim.g.blinkcompletion_disable = true
 			-- Disable fidget polling
 			require("fidget").setup({
 				progress = {
@@ -158,12 +161,16 @@ later(function()
 			})
 			-- Disable virtual text and lines
 			vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
+			-- Disable completion
+			vim.b.minicompletion_disable = true
 		end,
 		on_close = function()
 			-- Undo on_open function
-			vim.cmd("colorscheme " .. _G.Config.colorscheme)
+			vim.cmd("colorscheme " .. Config.colorscheme)
+			vim.opt.background = "dark"
+			-- Activate limelite
+			vim.cmd("Limelight!")
 			vim.g.minicursorword_disable = false
-			vim.g.blinkcompletion_disable = false
 			require("fidget").setup({
 				progress = {
 					suppress_on_insert = false,
@@ -171,8 +178,10 @@ later(function()
 				display = { render_limit = 16 },
 			})
 			vim.diagnostic.config({ virtual_text = true }) -- TODO: Better toggle
+			-- Enable completion
+			vim.b.minicompletion_disable = false
 		end,
 	})
 
-	_G.Config.nmap("\\z", "<cmd>Zen<cr>", "Toggle 'zen'")
+	Config.nmap("\\z", "<cmd>Zen<cr>", "Toggle 'zen'")
 end)
