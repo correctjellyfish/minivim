@@ -28,6 +28,8 @@ now_if_args(function()
 		"mdformat",
 		-- == Ocaml ==
 		"ocamllsp",
+		-- == Odin ==
+		"ols",
 		-- == Python ==
 		-- "pyright",
 		-- "pylsp",
