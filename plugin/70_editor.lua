@@ -294,13 +294,13 @@ later(function()
 	end, { desc = "Treesitter Search" })
 end)
 
--- Direnv (Tool Management) =================================
-now(function()
-	if vim.fn.has("linux") > 0 then
-		add({ "https://github.com/NotAShelf/direnv.nvim" })
-		require("direnv").setup({})
-	end
-end)
+-- -- Direnv (Tool Management) =================================
+-- now(function()
+-- 	if vim.fn.has("linux") > 0 then
+-- 		add({ "https://github.com/NotAShelf/direnv.nvim" })
+-- 		require("direnv").setup({})
+-- 	end
+-- end)
 
 -- Grug-far (Easier search and replace) ====================
 later(function()

@@ -22,9 +22,9 @@ later(function()
 	Config.nmap_leader("dc", "<cmd>DapContinue<cr>", "[C]ontinue")
 	-- Debug Commands
 	Config.nmap("<Down>", "<cmd>DapStepOver<cr>", "Step Over")
-	Config.nmap("<Right>", "<cmd>DapStepInto<cr>", "Step Over")
-	Config.nmap("<Left>", "<cmd>DapStepOut<cr>", "Step Over")
-	Config.nmap("<Up>", "<cmd>DapRestartFrame<cr>", "Step Over")
+	Config.nmap("<Right>", "<cmd>DapStepInto<cr>", "Step Into")
+	Config.nmap("<Left>", "<cmd>DapStepOut<cr>", "Step Out")
+	Config.nmap("<Up>", "<cmd>DapRestartFrame<cr>", "Restart Frame")
 
 	-- GDB (C/C++/Rust)
 	dap.adapters.gdb = {
