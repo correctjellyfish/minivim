@@ -102,7 +102,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "561751e839b99a4baca36b9d963166b66d2536a6",
+      "rev": "adb0b013aebc2c87c6c8026e7ed4273a3f6f296d",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "monochrome.nvim": {
@@ -119,7 +119,7 @@
       "version": "3.0.0 - 4.0.0"
     },
     "neogit": {
-      "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
+      "rev": "70708be9664b7fcdd010eb07bdc3ebc9311c2027",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neotest": {
@@ -175,7 +175,7 @@
       "src": "https://codeberg.org/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
+      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -183,7 +183,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "910fdf6f49e9dee7e7257c7d11a76b040fdfb9de",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -227,7 +227,7 @@
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tmux.nvim": {
-      "rev": "32ceaf2793582955ef9576809730878c4d2d9426",
+      "rev": "8d79b15bc8f115c956f467788db58b827afd0764",
       "src": "https://github.com/aserowy/tmux.nvim.git"
     },
     "todo-comments.nvim": {
@@ -239,7 +239,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "undotree": {
-      "rev": "5721c3fb3876f3e772251a23d1ab0948899a0216",
+      "rev": "8b52517999b1739e36e7f3c5a48a93356d9588e5",
       "src": "https://github.com/jiaoshijie/undotree"
     },
     "vim-sleuth": {
