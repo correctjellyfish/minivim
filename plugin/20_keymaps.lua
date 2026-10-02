@@ -126,8 +126,8 @@ Config.nmap_leader("fM", '<Cmd>Pick git_hunks path="%"<CR>', "Modified hunks (bu
 Config.nmap_leader("fq", pick_quickfix, "Quickfix")
 Config.nmap_leader("fr", "<Cmd>Pick resume<CR>", "Resume")
 Config.nmap_leader("fR", '<Cmd>Pick lsp scope="references"<CR>', "References (LSP)")
-Config.nmap_leader("fs", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace")
-Config.nmap_leader("fS", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols document")
+Config.nmap_leader("fs", '<Cmd>Pick lsp scope="document_symbol"<CR>', "Symbols document")
+Config.nmap_leader("fS", '<Cmd>Pick lsp scope="workspace_symbol"<CR>', "Symbols workspace")
 Config.nmap_leader("fv", '<Cmd>Pick visit_paths cwd=""<CR>', "Visit paths (all)")
 Config.nmap_leader("fV", "<Cmd>Pick visit_paths<CR>", "Visit paths (cwd)")
 
