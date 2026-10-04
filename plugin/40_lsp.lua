@@ -33,8 +33,8 @@ now_if_args(function()
 		-- == Python ==
 		-- "pyright",
 		-- "pylsp",
-		"ruff",
 		-- "pyrefly",
+		"ruff",
 		"ty",
 		-- == R ==
 		"r_language_server",
