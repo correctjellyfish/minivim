@@ -5,7 +5,7 @@
       "src": "https://github.com/Abstract-IDE/Abstract-cs"
     },
     "bluloco.nvim": {
-      "rev": "caa4233dab772dad1db272c78025dd9682dca9e8",
+      "rev": "811253faa7738bfc3a2658a7d0a034dfb9f34f78",
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/idr4n/github-monochrome.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "65d615e1f78775323bfd4651f694824256e2adc1",
+      "rev": "6f0cd5049f414932ba55a5d6f3282a59d55c71a3",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "monochrome.nvim": {
@@ -175,7 +175,7 @@
       "src": "https://codeberg.org/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
+      "rev": "910f0c4d46aa186641518395bc7e6fffb4d23baf",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -251,7 +251,7 @@
       "src": "https://github.com/ianklapouch/wildberries.nvim"
     },
     "yanky.nvim": {
-      "rev": "4b4ddd196526fd3d6fd091d931810f9743e936d3",
+      "rev": "b50e7b57b9a2296dc4393e024eb0b8235b41c641",
       "src": "https://github.com/gbprod/yanky.nvim"
     },
     "zen-mode.nvim": {
