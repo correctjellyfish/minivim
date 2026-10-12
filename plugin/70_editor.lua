@@ -292,6 +292,14 @@ later(function()
 	vim.keymap.set({ "o", "x" }, "R", function()
 		require("flash").treesitter_search()
 	end, { desc = "Treesitter Search" })
+	vim.keymap.set({ "n", "x", "o" }, "<c-space>", function()
+		require("flash").treesitter({
+			actions = {
+				["<c-space>"] = "next",
+				["<BS>"] = "prev",
+			},
+		})
+	end, { desc = "Treesitter incremental selection" })
 end)
 
 -- -- Direnv (Tool Management) =================================
