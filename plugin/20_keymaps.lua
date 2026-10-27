@@ -185,9 +185,15 @@ Config.nmap_leader("mt", "<Cmd>lua MiniMap.toggle()<CR>", "Toggle")
 
 -- o is for 'Other'. Common usage:
 -- - `<Leader>oz` - toggle between "zoomed" and regular view of current buffer
+local clear_cursors = function()
+	local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+end
+
 Config.nmap_leader("or", "<Cmd>lua MiniMisc.resize_window()<CR>", "Resize to default width")
 Config.nmap_leader("ot", "<Cmd>lua MiniTrailspace.trim()<CR>", "Trim trailspace")
 Config.nmap_leader("oz", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
+Config.nmap_leader("oc", clear_cursors, "Clear Cursors")
 
 -- s is for 'Session'. Common usage:
 -- - `<Leader>sn` - start new session
@@ -241,7 +247,7 @@ local random_colorscheme = function()
 	vim.cmd.colorscheme(new_scheme)
 end
 
-Config.nmap_leader("oc", random_colorscheme, "Set Random Colorscheme")
+Config.nmap_leader("oC", random_colorscheme, "Set Random Colorscheme")
 
 -- Create a keymap for picking a new colorscheme
 local pick_colorscheme = function()
