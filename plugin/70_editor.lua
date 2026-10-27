@@ -159,7 +159,7 @@ later(function()
 	-- Diff view
 	add({ "https://github.com/sindrets/diffview.nvim" })
 	require("diffview").setup({})
-	Config.nmap_leader("gv", "<cmd>DiffViewOpen<cr>", "Diff view")
+	Config.nmap_leader("gv", "<cmd>DiffviewOpen<cr>", "Diff view")
 
 	-- Neogit
 	add({
