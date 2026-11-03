@@ -5,7 +5,7 @@
       "src": "https://github.com/Abstract-IDE/Abstract-cs"
     },
     "bluloco.nvim": {
-      "rev": "912227935d63766fe11e4168840063bd2e9a4274",
+      "rev": "bc0e0421bd29ade26f34dcd5b558e4304efcdeb6",
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "2dbd7e944014cf880eb824c1026337bdab1f8d69",
+      "rev": "8ed987565d081a8ebeda0bac939c22a0f451d074",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffview.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/idr4n/github-monochrome.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f",
+      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "a03ad899bda446b5a81cfa99d8aeeb92241522f3",
+      "rev": "a321b535c75ca88ba7fddfd8eb5b583fbda50dd6",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "monochrome.nvim": {
@@ -171,11 +171,11 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lint": {
-      "rev": "f6230a5c06ba59e6059c14637f1dbe29a7978b9b",
+      "rev": "52107ce2076a27a285af781248e2c59bad817cd0",
       "src": "https://codeberg.org/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
+      "rev": "adfbb74472f6c231b651b650a89f414c2680fb31",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -183,7 +183,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
+      "rev": "0195cd62fa89950f34c0e0d648ea7897ab85d4d3",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -223,7 +223,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "7adf1b8cd8acbdda4e89e15334481c1608987f00",
+      "rev": "9c5c1aa055b33aa17d4f113724b1e5c4f1f77a1e",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tmux.nvim": {
@@ -251,7 +251,7 @@
       "src": "https://github.com/ianklapouch/wildberries.nvim"
     },
     "yanky.nvim": {
-      "rev": "adcabd8512bead30184916fa9277e73c021ef099",
+      "rev": "edcbe0f6d693b9e7860626094f886a2d79cfe63b",
       "src": "https://github.com/gbprod/yanky.nvim"
     },
     "zen-mode.nvim": {
