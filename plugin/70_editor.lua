@@ -222,11 +222,8 @@ later(function()
 	end)
 
 	-- Add cursors at matches
-	set({ "n", "x" }, "<c-j>", function()
+	set({ "n", "x" }, "<c-a>", function()
 		mc.matchAddCursor(1)
-	end)
-	set({ "n", "x" }, "<c-k>", function()
-		mc.matchAddCursor(-1)
 	end)
 
 	-- Split visual selections by regex.
