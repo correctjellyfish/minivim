@@ -211,8 +211,6 @@ later(function()
 	mc.setup()
 
 	local set = vim.keymap.set
-	-- Split visual selections by regex.
-	set("x", "<c-c>", mc.matchCursors)
 	-- Add or skip cursor above/below the main cursor.
 	set({ "n", "x" }, "<c-up>", function()
 		mc.lineAddCursor(-1)
@@ -224,6 +222,9 @@ later(function()
 	-- Add cursors at matches
 	set({ "n", "x" }, "<c-a>", function()
 		mc.matchAddCursor(1)
+	end)
+	set({ "n", "x" }, "<c-s>", function()
+		mc.matchAddCursor(-1)
 	end)
 
 	-- Split visual selections by regex.
