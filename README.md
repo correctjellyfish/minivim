@@ -19,11 +19,8 @@ Install needed dependencies:
 Simply clone into ~/.config/nvim
 
 ```bash
-git clone https://github.com/Braden-Griebel/minivim.git ~/.config/nvim
+git clone https://github.com/correctjellyfish/minivim.git ~/.config/nvim
 ```
-
-Then open Neovim, running MasonToolsInstall should install
-all needed LSPs/Formatters/Linters
 
 ## Languages
 
